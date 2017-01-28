@@ -1,3 +1,3 @@
 <?php
-echo "66666";
+print("Hello World!");
 ?>
