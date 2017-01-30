@@ -1,0 +1,104 @@
+* {
+    box-sizing: border-box;
+}
+
+.iphone {
+    position: relative;
+    background-image: url(iPhone-6S-Silver.png);
+    background-position: -120px;
+    height: 500px;
+    width: 300px;
+    background-size: 500px;
+}
+
+.outbound {
+    position: absolute;
+    top: 10px;
+    left: 7px;
+    width: 245px;
+    height: 480px;
+    border-radius: 9%;
+    border: 4px solid;
+    border-color: #a09c9c;
+    box-shadow: 11px 18px 17px 0px rgba(179, 172, 179, 1);
+}
+
+.microphone {
+    position: absolute;
+    top: 20px;
+    left: 125px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #292727;
+}
+
+.camara {
+    position: absolute;
+    top: 34px;
+    left: 83px;
+    width: 9px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #292727;
+}
+
+.speaker-top {
+    position: absolute;
+    top: 35px;
+    left: 112px;
+    width: 36px;
+    height: 5px;
+    border-radius: 30%;
+    background-color: #848080;
+}
+
+.speaker-bottom {
+    position: absolute;
+    top: 37px;
+    left: 112px;
+    width: 36px;
+    height: 4px;
+    border-radius: 40%;
+    background-color: #848080;
+}
+
+.screen {
+    position: absolute;
+    top: 54px;
+    left: 18px;
+    width: 222px;
+    height: 376px;
+    opacity: 1;
+}
+
+.screen img {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.btn {
+    position: absolute;
+    top: 436px;
+    left: 109px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid;
+    border-color: #b4b9b9;
+}
+
+.btn-inside-gif {
+    position: absolute;
+    top: 448px;
+    left: 121px;
+    width: 16px;
+    height: 16px;
+    border-radius: 30%;
+    background-color: white;
+    border: 1px solid;
+    border-color: #b4b9b9;
+}

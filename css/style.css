@@ -1,4 +1,4 @@
-article{
+article {
     font-family: sans-serif;
     font-size: : 25px;
     font-style: oblique;
@@ -6,7 +6,74 @@ article{
     color: blue;
 }
 
-article>span{
+article>span {
     color: red;
     text-decoration: underline;
+}
+
+nav {
+    overflow: auto;
+}
+
+nav>ul {
+    padding: 0;
+    margin: 0;
+}
+
+nav>ul li {
+    list-style: none;
+    float: left;
+    height: 50px;
+    width: 100px;
+    text-align: center;
+    line-height: 50px;
+}
+
+nav>ul li a {
+    text-decoration: none;
+}
+
+.box {
+    width: 200px;
+    height: 200px;
+    border: 1px solid;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    background-color: aqua;
+}
+
+.jumbotron {
+    height: 300px;
+    background-image: url(https://source.unsplash.com/800x600?nature);
+    color: white;
+    text-align: center;
+    padding: 300px 0px;
+}
+
+.jumbotron h1 {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.gravatar {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.gravatar img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.ad .thumbnail {
+    border-style: none;
+}
+
+footer {
+    background-color: #333;
+    color: #eee;
+    height: 250px;
+    clear: both;
 }
