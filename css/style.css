@@ -62,8 +62,8 @@ nav>ul li a {
 }
 
 .gravatar img {
-    width: 100px;
-    height: 100px;
+    width: 50%;
+    height: 60%;
     border-radius: 50%;
 }
 
@@ -76,4 +76,20 @@ footer {
     color: #eee;
     height: 250px;
     clear: both;
+}
+
+.text:after {
+    content: "";
+    background-color: aqua;
+    display: inline-block;
+    width: 100px;
+    border: 1px solid;
+}
+
+.text:before {
+    content: "";
+    background-color: aqua;
+    display: inline-block;
+    width: 100px;
+    border: 1px solid;
 }
