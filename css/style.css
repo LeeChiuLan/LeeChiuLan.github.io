@@ -128,3 +128,25 @@ footer {
     width: 100px;
     border: 1px solid;
 }
+
+.screencover {
+    position: relative;
+    border: 1px solid aqua;
+}
+
+.screencover:after {
+    position: absolute;
+    top: 0px;
+    left: 190px;
+    background-color: aqua;
+    opacity: 0.5;
+    content: "";
+    display: block;
+    width: 50%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.screencover:hover:after {
+    opacity: 0;
+}
