@@ -23,7 +23,6 @@ nav>ul {
 nav>ul li {
     list-style: none;
     float: left;
-    height: 50px;
     width: 100px;
     text-align: center;
     line-height: 50px;
@@ -32,6 +31,42 @@ nav>ul li {
 nav>ul li a {
     text-decoration: none;
 }
+
+
+/* ----- */
+
+li a,
+.dropbtn {
+    padding: 0px 16px;
+    display: inline-block;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 60px;
+}
+
+.dropdown-content a {
+    padding: 0px 16px;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+/* ----- */
 
 .box {
     width: 200px;
