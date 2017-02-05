@@ -185,3 +185,36 @@ footer {
     text-decoration: underline;
     color: #fff;
 }
+
+.fixed-btn {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: royalblue;
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.fixed-btn>a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.fixed-btn span {
+    background: none repeat scroll 0 0 #F8F8F8;
+    color: grey;
+    font-size: 13px;
+    line-height: 30px;
+    margin: 0 auto;
+    display: none;
+}
+
+a:hover span {
+    display: block;
+}
