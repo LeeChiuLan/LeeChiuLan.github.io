@@ -19,6 +19,7 @@ blockquote,
 div {
     margin: 0;
     padding: 0;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .container {
