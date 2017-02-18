@@ -33,6 +33,11 @@ div {
     display: none;
 }
 
+b,
+strong {
+    font-weight: bold;
+}
+
 .row:after {
     content: "";
     clear: both;

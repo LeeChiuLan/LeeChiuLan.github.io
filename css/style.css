@@ -95,6 +95,7 @@ li.dropdown {
 .gravatar {
     text-align: center;
     margin: 0 auto;
+    width: 50%;
 }
 
 .gravatar img {
@@ -218,4 +219,15 @@ footer {
 
 a:hover span {
     display: block;
+}
+
+section.intro {
+    text-align: center;
+    padding: 30px 0;
+    font-family: 'PT Sans Caption', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+}
+
+section.intro p.lead {
+    margin-bottom: 10px;
 }
