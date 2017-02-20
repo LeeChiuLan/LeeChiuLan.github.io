@@ -133,24 +133,18 @@ footer {
 
 .screencover {
     position: relative;
-    border: 1px solid aqua;
+    
 }
 
 .screencover:after {
-    position: absolute;
-    top: 0px;
-    left: 190px;
-    background-color: aqua;
-    opacity: 0.5;
-    content: "";
-    display: block;
-    width: 50%;
-    height: 100%;
-    border-radius: 50%;
 }
 
 .screencover:hover:after {
     opacity: 0;
+}
+
+.screencover img {
+    width: 100%;
 }
 
 .post-heading h1 {
@@ -214,7 +208,7 @@ footer {
 
 section.intro {
     text-align: center;
-    padding: 60px 0;
+    padding: 65px 0;
     font-family: 'PT Sans Caption', Helvetica, Arial, sans-serif;
     font-weight: 700;
 }
