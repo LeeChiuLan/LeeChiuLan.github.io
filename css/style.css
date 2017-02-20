@@ -231,3 +231,7 @@ section.intro {
 section.intro p.lead {
     margin-bottom: 10px;
 }
+
+footer img {
+    width: 100%;
+}
