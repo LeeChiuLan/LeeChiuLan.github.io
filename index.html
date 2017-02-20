@@ -10,13 +10,15 @@
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://LeeChiuLan.github.io/css/MyBootstrap/base.css">
     <link rel="stylesheet" href="css/style.css">
+	<script src="jquery/axjs0.js" type="text/javascript"></script>
 </head>
 
 <body>
     <div class="fixed-btn">
         <a href="#">Fixed-btn<span>RETURN</span></a>
     </div>
-    <section class="jumbotron">
+	<section class="hidden-jumbotron-as-sm" id="hidden-jumbotron-as-sm">
+    <div class="jumbotron">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 ">
@@ -28,7 +30,7 @@
                 </div>
             </div>
         </div>
-
+    </div>
     </section>
     <section>
         <div class="container">
@@ -59,10 +61,15 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 ">
                     <div class="gravatar">
-
+                    <div class="hidden-jumbotron-as-sm">
                         <h2>Start Bootstrap</h2>
                         <p class="lead">Forever free, open source, and easy to use. Start Bootstrap is a collection of <strong>free to download Bootstrap themes and templates</strong>. Our themes are open source and you can use them for any purpose, even comercially!
                         </p>
+                    </div>
+                    <div class="show-jumbotron-as-sm">
+                        <h2 class="subheading">If you know this then you can extend your happiness</h2>
+                        <p class="lead">Quoted from <a href="http://www.towisdom.org.tw/03-mag.asp" target="_blank">Torch of Wisdom Monthly</a> on February 05, 2017</p>
+                    </div>
                     </div>
                 </div>
             </div>
