@@ -277,3 +277,17 @@ section{
     padding-top: 0;
     padding: 0;
 }
+
+.outside{
+    padding: 5px;
+    margin: 5px;
+    margin-left: 5px;
+}
+
+ul.outside {
+    padding: 5px;
+    margin: 5px;
+    margin-left: 5px;
+    left: 0;
+    text-align: left;
+}
