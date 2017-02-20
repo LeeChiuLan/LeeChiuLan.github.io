@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+    <title>Home Decoration</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://LeeChiuLan.github.io/css/MyBootstrap/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="jquery/axjs0.js"></script>
+    <script>
+        $(document).ready(function() {  
+            $(window).bind('scroll', function() {  
+                var navHeight = $(window).height() - 70;
+                if ($(window).scrollTop() > 600) {
+                    $('nav').addClass('fixed');
+                } else {
+                    $('nav').removeClass('fixed');
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <!--輪播開始-->
+    <div id="slideshow" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+            <!--輪播圖片或內容-->
+            <div class="item active"><img src="image/020_300dpi_5900x4188_all-free-download.com.jpg" alt="">
+                <div class="carousel-caption">
+                    <h3>Chania</h3>
+                    <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+                </div>
+            </div>
+            <div class="item"><img src="image/040_5000x3750_300dpi_all-free-download.com_2977096.jpg" alt="">
+                <div class="carousel-caption">
+                    <h3>Chania</h3>
+                    <p>The atmosphere in Chania has a touch of Florence and Venice.</p>
+                </div>
+            </div>
+            <div class="item"><img src="image/045_8000x6380_300dpi_all-free-download.com_20466907.jpg" alt="">
+                <div class="carousel-caption">
+                    <h3>Flowers</h3>
+                    <p>Beatiful flowers in Kolymbari, Crete.</p>
+                </div>
+            </div>
+        </div>
+        <!--上一頁 下一頁 按鈕-->
+        <div class="control-btn">
+            <a href="#slideshow" class="left carousel-control" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+            <a href="#slideshow" class="right carousel-control" data-slide="next"><span class="glyphicon glyphicon-chevron-right" ></span></a>
+        </div>
+        <!--小圓點換頁-->
+        <ol class="carousel-indicators">
+            <li data-target="#slideshow" data-slide-to="0" class="active"></li>
+            <li data-target="#slideshow" data-slide-to="1"></li>
+            <li data-target="#slideshow" data-slide-to="2"></li>
+        </ol>
+    </div>
+    <!--輪播結尾-->
+</body>
+
+</html>
