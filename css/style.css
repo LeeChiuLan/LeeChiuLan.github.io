@@ -306,10 +306,15 @@ header nav ul li {
     margin-right: 50px;
     margin-top: 20px;
     border: 1px solid white;
+    border-radius: 8%;
 }
 
 header nav ul li:last-of-type {
     margin-right: 0;
+}
+
+.home-btn {
+    border-radius: 8%;
 }
 
 .home-btn a {
