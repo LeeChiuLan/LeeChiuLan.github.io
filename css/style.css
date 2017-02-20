@@ -232,12 +232,6 @@ footer img {
     width: 100%;
 }
 
-
-.fixed {
-    position:fixed;
-    top:0;
-}
-
 .navbar-toggle{
     color: #35546f;
 }
@@ -259,6 +253,16 @@ footer img {
     .navbar-toggle{
     border: 1px solid #86bef0 ;
     }
+    
+    
+.menu-fixed-as-sm {
+    z-index: 9999 !important;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+    
 }
 
 @media screen and (min-width:768px) and (max-width:992px) {
@@ -266,4 +270,14 @@ footer img {
     .navbar-toggle{
     border: 1px solid #86bef0 ;
     }
+
+}
+
+
+.fixed {
+    z-index: 9999 !important;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
 }
