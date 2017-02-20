@@ -163,11 +163,6 @@ footer {
     font-weight: 600
 }
 
-.intro-header {
-    margin-top: 0;
-    color: #fff;
-}
-
 .meta {
     font-family: Lora, 'Times New Roman', serif;
     font-style: italic;
@@ -219,7 +214,7 @@ footer {
 
 section.intro {
     text-align: center;
-    padding: 30px 0;
+    padding: 60px 0;
     font-family: 'PT Sans Caption', Helvetica, Arial, sans-serif;
     font-weight: 700;
 }
@@ -282,4 +277,9 @@ footer img {
     top: 0;
     width: 100%;
     background-color: white;
+}
+
+section{
+    padding-top: 0;
+    padding: 0;
 }
