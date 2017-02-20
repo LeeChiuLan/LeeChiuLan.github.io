@@ -58,6 +58,12 @@ strong {
 }
 
 @media screen and (max-width:768px) {
+    .hidden-jumbotron-as-sm {
+        display: none;
+    }
+    .show-jumbotron-as-sm{
+        display: block;
+    }
     .col-xs-1 {
         width: calc(100% * 1 / 12);
     }
@@ -97,6 +103,14 @@ strong {
 }
 
 @media screen and (min-width:768px) and (max-width:992px) {
+    
+    .hidden-jumbotron-as-sm {
+        display: block;
+    }
+    .show-jumbotron-as-sm{
+        display: none;
+    }
+    
     .container {
         width: 750px;
     }
@@ -139,6 +153,14 @@ strong {
 }
 
 @media screen and (min-width:992px) and (max-width:1200px) {
+    
+    .hidden-jumbotron-as-sm {
+        display: block;
+    }
+    .show-jumbotron-as-sm{
+        display: none;
+    }
+    
     .container {
         width: 970px;
     }
@@ -181,6 +203,14 @@ strong {
 }
 
 @media screen and (min-width:1200px) {
+    
+    .hidden-jumbotron-as-sm {
+        display: block;
+    }
+    .show-jumbotron-as-sm{
+        display: none;
+    }
+    
     .container {
         width: 1170px;
     }
