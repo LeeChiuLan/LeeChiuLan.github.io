@@ -231,3 +231,39 @@ section.intro p.lead {
 footer img {
     width: 100%;
 }
+
+
+.fixed {
+    position:fixed;
+    top:0;
+}
+
+.navbar-toggle{
+    color: #35546f;
+}
+
+.icon-bar{
+    background-color: #86bef0;
+}
+
+#myNavbar{
+    right: 0px;
+    
+}
+
+@media screen and (max-width:768px) {
+    #myNavbar{
+    background-color: #86bef0;
+    
+    }
+    .navbar-toggle{
+    border: 1px solid #86bef0 ;
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:992px) {
+    
+    .navbar-toggle{
+    border: 1px solid #86bef0 ;
+    }
+}
