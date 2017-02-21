@@ -340,11 +340,10 @@ header ul li:last-of-type {
 }
 
 .google-search-like {
-    width: 800px;
+    width: 60%;
     margin:0 auto;
-    border: 5px solid;
+    
     float: left;
-    background-color: black;
     border-radius: 1%;
 }
 
