@@ -342,7 +342,9 @@ header ul li:last-of-type {
 .google-search-like {
     width: 60%;
     margin:0 auto;
-    
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 0px;
     float: left;
     border-radius: 1%;
 }
