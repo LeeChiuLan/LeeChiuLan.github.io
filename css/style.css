@@ -338,3 +338,13 @@ header ul li:last-of-type {
 .home-btn:hover {
     
 }
+
+.google-search-like {
+    width: 800px;
+    margin:0 auto;
+    border: 5px solid;
+    float: left;
+    background-color: black;
+    border-radius: 1%;
+}
+
