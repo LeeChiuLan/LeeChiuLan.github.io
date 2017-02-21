@@ -290,15 +290,13 @@ header {
     width: 10%;
 }
 
-
-#slideshow header{
-    width:200px;
+#slideshow header {
+    width: 200px;
     height: 100px;
-    margin:0 auto;
+    margin: 0 auto;
     overflow: auto;
     clear: both;
 }
-
 
 #header {
     margin-left: 0;
@@ -311,7 +309,6 @@ header ul li {
     display: inline-block;
     margin-right: 50px;
     margin-top: 20px;
-    
     border-radius: 8%;
 }
 
@@ -335,13 +332,11 @@ header ul li:last-of-type {
     font-size: 16px;
 }
 
-.home-btn:hover {
-    
-}
+.home-btn:hover {}
 
 .google-search-like {
     width: 60%;
-    margin:0 auto;
+    margin: 0 auto;
     margin-left: 10px;
     margin-right: 10px;
     padding: 0px;
@@ -349,3 +344,6 @@ header ul li:last-of-type {
     border-radius: 1%;
 }
 
+.google-search-like a {
+    text-decoration: none;
+}
