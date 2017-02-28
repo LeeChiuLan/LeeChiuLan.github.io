@@ -11,10 +11,6 @@ article>span {
     text-decoration: underline;
 }
 
-nav {
-    overflow: auto;
-}
-
 nav>ul {
     padding: 0;
     margin: 0;
