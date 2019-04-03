@@ -22,6 +22,30 @@
                 }
             });
         });
+        function Qdata1() {
+            $$.post(
+                'http://haoyi.synology.me:8002/JsonOutput',
+                {   
+                	'test': 'XD'
+                },
+                function(data){
+					alert(data["A"])        
+                }
+            );
+     		// alert("apple")
+        }
+        function Qdata2() {
+            $$.post(
+                'http://haoyi.synology.me:8002/DBOutput',
+                {   
+                	'test': 'XD'
+                },
+                function(data){
+					alert(data[0]["acc"]+" + "+data[0]["pass"])        
+                }
+            );
+     		// alert("apple")
+        }    
     </script>
 </head>
 
@@ -83,10 +107,13 @@
                             <h2>資穎城市</h2>
                             <p class="lead">Our themes are open source and you can use them for any purpose, even comercially!
                             </p>
-                        </div>
-                        <div class="show-jumbotron-as-sm">
-                            <h2 class="subheading">If you know this then you can extend your happiness</h2>
-                            <p class="lead">Quoted from <a href="http://www.towisdom.org.tw/03-mag.asp" target="_blank">Torch of Wisdom Monthly</a> on February 05, 2017</p>
+							<button onclick="Qdata1()">接收JSON格式</button>
+							<button onclick="Qdata2()">資料庫回傳</button>
+							<form action="/in" method="post">
+		　						姓名：<input type="text" name="user"><br>
+		　						內容：<input type="text" name="password"><br>
+		　						<input type="submit" value="送出表單">
+							</form>
                         </div>
                     </div>
                 </div>
