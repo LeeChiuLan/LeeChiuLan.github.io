@@ -400,11 +400,10 @@ footer {
     font-size: 15px;
     font-weight: 600;
 }
-/*
-.divleft {
-  float: left;
-}
-*/
-.divleft {
-  overflow: auto;
+
+.photo {
+  border-radius: 45px;
+  margin-right: 20px;
+  width: 90px;
+  height:90px
 }
