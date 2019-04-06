@@ -12,7 +12,7 @@ $def with (static)
     <link rel="stylesheet" href="/static/css/MyBootstrap/base.css">
     <link rel="stylesheet" href="/static/css/style.css">
     <script src="/static/jquery/axjs0.js"></script>
-     <script>
+    <script>
         $$(document).ready(function() {  
             $$(window).bind('scroll', function() { 
                 if ($$(window).scrollTop() > 600) {
@@ -73,91 +73,33 @@ $def with (static)
                 </div>
             </div>
     </section>
-    <section class="intro">
+    <section>
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">                    
-					<div class="list-group">
-						<a href="#" class="list-group-item active"> Type </a>
-						<a href="#" class="list-group-item"> Education </a>
-						<a href="#" class="list-group-item"> Computer </a>
-						<a href="#" class="list-group-item"> Healthy </a>
-						<a href="#" class="list-group-item"> Science </a>
-						<a href="#" class="list-group-item"> Travel </a>
-						<a href="#" class="list-group-item"> Beauty </a>
-						<a href="#" class="list-group-item"> Sport </a>
-						<a href="#" class="list-group-item"> Music </a>
-						<a href="#" class="list-group-item"> Art </a>
-						<a href="#" class="list-group-item"> Game </a>
-						<a href="#" class="list-group-item"> Food </a>
-						<a href="#" class="list-group-item"> Car </a>
-						<a href="#" class="list-group-item"> Pet </a>
-					</div>
-				</div>
-                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-					<div class="list-group divleft">
-						<a href="#" class="list-group-item">
-						<h4 class="list-group-item-heading">What is HTML?</h4>
-						<p class="list-group-item-text">HTML stands for HyperText Markup Language. HTML is the main markup language for describing the structure of Web pages.</p>
-						</a>
-						<a href="#" class="list-group-item">
-						<h4 class="list-group-item-heading">What is Bootstrap?</h4>
-						<p class="list-group-item-text">Bootstrap is a powerful front-end framework for faster and easier web development. It is a collection of HTML and CSS based design template.</p>
-						</a>
-						<a href="#" class="list-group-item">
-						<h4 class="list-group-item-heading">What is CSS?</h4>
-						<p class="list-group-item-text">CSS stands for Cascading Style Sheet. CSS allows you to specify various style properties for a given HTML element such as colors, backgrounds, fonts etc.</p>
-						</a>				
-						<div class="list-group-item">
-							<div class="ts Pg8zWb b80nOe C1Iii FddHQd tsUanb">
-								<div class="gG0TJc">
-									<h3 class="r dO0Ag">
-									<a class="l lLrAF" href="https://chine" ping="/url?sa=t&amp;source=web&amp;rct=j&amp;url=http">黑鯊2「遊」到<em>香港</em>啦</a>
-									</h3>
-									<div class="st">上月中時在中國大陸發表的黑鯊2 遊戲手機，現已正式在<em>香港</em>上架發售。.39 吋低頻 ...
-									</div>
-								</div>
-								<div class="YiHbdc card-section">
-									<div class="cWEW3c">
-										<a class="kl0Osd" href="tt.coved=0ahUKEwjEo-vUj7rhAhUhK6YKHYxaBQo4FBCqAggtMAI">Game</a>
-										<span class="v0c3xd">-</span><span class="nsa fwzPFf f">7分鐘前</span>
-									</div>
-								</div>
-							</div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<form action="/in" method="post">
+						<h1>Sign Up</h1>
+						<div class="form-group">
+							<label for="inputUsername">Username</label>
+							<input type="text" class="form-control" id="inputUsername" placeholder="Username" name="username>
 						</div>
-					</div>
-				
-					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-						<div class="thumbnail">
-							<a href="https://wujpkimo.github.io/" target="_blank">
-							<div class="caption">
-								<h3><span class="glyphicon glyphicon-link"></span>Jason Wu</h3>                            
-							</div>
-							<img src="image/url/wujpkimo.png" alt="">
-							</a>
+						<div class="form-group">
+							<label for="inputEmail">Email</label>
+							<input type="email" class="form-control" id="inputEmail" placeholder="Email" name="emal" required>
 						</div>
-					</div>
-					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-						<div class="thumbnail">
-							<a href="https://leoweng.github.io/" target="_blank">
-							<div class="caption">
-								<h3><span class="glyphicon glyphicon-link"></span>翁聖竑</h3>                            
-							</div>
-							<img src="image/url/leoweng.png" alt="">
-							</a>
+						<div class="form-group">
+							<label for="inputPassword">Password</label>
+							<input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password" required>
 						</div>
-					</div>
-					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-						<div class="thumbnail">
-							<a href="https://yilingleednd.github.io/" target="_blank">
-							<div class="caption">
-								<h3><span class="glyphicon glyphicon-link"></span>Yiling Lee</h3>                            
-							</div>
-							<img src="image/url/yilingleednd.png" alt="">
-							</a>
+						<div class="form-group">
+							<label for="inputPassword">Confirm Password</label>
+							<input type="password" class="form-control" id="inputPassword" placeholder="Confirm Password" name="confirmpassword" required>
 						</div>
-					</div>
-				</div>
+						<button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+					</form>
+					<br>
+					<button onclick="notYet()">Log in with VAULT</button>
+                </div>
             </div>
         </div>
     </section>
