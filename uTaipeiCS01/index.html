@@ -119,11 +119,12 @@ $def with (static)
 								<a href="#">Travel</a>
 								<span >-</span><span>1星期前</span>
 							</div>
+							<div class="add-answer-box>
 										<a href="#" onclick="toggle_visibility('add_answer1');">
 											<img src="/static/images/person_ans.png" class="pull-left photo" alt="Magicq"/>+
 											<p>to Answer</p>
 										</a>
-										<div class="add-answer-box hidden" id="add_answer1">
+										<div class="add-answer-box" id="add_answer1" style="display:none;">
 											<form action="/event/answer" method="post">
 												<div>
 													<textarea placeholder="Add your answer" maxlength="500" rows="5" style="width:100%;"></textarea>
@@ -137,7 +138,7 @@ $def with (static)
 												</div>
 											</form>
 										</div>
-									
+							</div>		
 						</div>
 						<div class="list-group-item">
 							<a href="#">
