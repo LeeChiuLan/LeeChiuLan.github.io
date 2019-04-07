@@ -21,8 +21,26 @@ $def with (static)
                     $('nav').removeClass('fixed');
                 }
             });
+			
+			$('#switch-id-vault').on('change', function() {
+				if ($('#switch-id-vault').is(':checked')) {
+					$('#id-vault-box').show();
+				} else {
+					$('#id-vault-box').hide();
+				}
+			});
+
         });
     </script>
+	<script type="text/javascript">
+	function toggle_visibility(id) {
+       var e = document.getElementById(id);
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
+    }
+	</script>
 </head>
 
 <body>
@@ -109,9 +127,12 @@ $def with (static)
 						</div>
 						<div class="form-group">
 							<span class="switch">
-								<input type="checkbox" class="switch" id="switch-id-vault">
+								<input type="checkbox" class="switch" id="switch-id-vault" onclick="myCheck('switch-id-vault')">
 								<label for="switch-id">VAULT</label>
 							</span>
+							<div id="id-vault-box" style="display:none;">
+								<input type="text" class="form-control" id="inputVault" name="vault" placeholder="MITH(Mithril)">
+							</div>
 						</div>
 						<div class="form-group">
 							<label for="inputContent">Content</label>
