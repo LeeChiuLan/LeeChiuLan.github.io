@@ -41,6 +41,15 @@ $def with (static)
        else
           e.style.display = 'block';
     }
+	
+	function on_off_VAULT(id,obj_id){
+       var checkBox = document.getElementById(id);
+       var e = document.getElementById(obj_id);
+	   if (checkBox.checked == true)
+          e.style.display = 'block';
+	   else
+		  e.style.display = 'none';
+	}
 	</script>
 </head>
 
@@ -105,6 +114,7 @@ $def with (static)
 						</div>
 						<div class="form-group">
 							<label for="inputType">Type</label>
+							<div>
 							<select iclass="form-control" d="inputType" name="type" size="4" multiple required>
 								<option value="Education">Education</option>
 								<option value="Computer">Computer</option>
@@ -121,6 +131,7 @@ $def with (static)
 								<option value="Car">Car</option>
 								<option value="Pet">Pet</option>
 							</select>
+							</div>
 						</div>
 						<div class="form-group">
 							<label for="inputPeriod"> Validity Period</label>
@@ -128,7 +139,7 @@ $def with (static)
 						</div>
 						<div class="form-group">
 							
-							<input type="checkbox" name="fancy-checkbox-primary" id="fancy-checkbox-primary" autocomplete="off" />
+							<input type="checkbox" name="fancy-checkbox-primary" id="fancy-checkbox-primary" autocomplete="off" onclick="on_off_VAULT('fancy-checkbox-primary','id-vault-box');"/>
 							<div class="[ btn-group ]">
 								<label for="fancy-checkbox-primary" class="[ btn btn-primary ]">
 									<span class="[ glyphicon glyphicon-ok ]"></span>
