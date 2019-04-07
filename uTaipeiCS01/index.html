@@ -12,6 +12,7 @@ $def with (static)
     <link rel="stylesheet" href="/static/css/MyBootstrap/base.css">
     <link rel="stylesheet" href="/static/css/style.css">
     <script src="/static/jquery/axjs0.js"></script>
+	<script type="text/javascript" src="/static/jquery/skrscripts.js"></script>
      <script>
         $$(document).ready(function() {  
             $$(window).bind('scroll', function() { 
@@ -23,15 +24,6 @@ $def with (static)
             });
         });
     </script>
-	<script type="text/javascript">
-	function toggle_visibility(id) {
-       var e = document.getElementById(id);
-       if(e.style.display == 'block')
-          e.style.display = 'none';
-       else
-          e.style.display = 'block';
-    }
-	</script>
 </head>
 
 <body>
@@ -48,7 +40,7 @@ $def with (static)
                             <a class="navbar-brand" href="/">Home</a>
                         </div>		
 						<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-							<form action="" class="search-form">
+							<form action="/command/inquire" class="search-form">
 								<div class="form-group has-feedback">
 									<label for="search" class="sr-only">Search</label>
 									<input type="text" class="form-control" name="search" id="search" placeholder="search">
