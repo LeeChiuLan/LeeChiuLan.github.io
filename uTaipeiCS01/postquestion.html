@@ -22,8 +22,8 @@ $def with (static)
                 }
             });
 			
-			$('#switch-id-vault').on('change', function() {
-				if ($('#switch-id-vault').is(':checked')) {
+        $("#switch-id-vault").click(function(){
+            if($(this).is(':checked')){
 					$('#id-vault-box').show();
 				} else {
 					$('#id-vault-box').hide();
@@ -125,11 +125,17 @@ $def with (static)
 							<label for="inputPeriod"> Validity Period</label>
 							<input type="text" class="form-control" id="inputPeriod" name="period" placeholder="less than 5(Unit: Day)" required>
 						</div>
-						<div class="form-group">
-							<span class="switch">
-								<input type="checkbox" class="switch" id="switch-id-vault" onclick="myCheck('switch-id-vault')">
-								<label for="switch-id">VAULT</label>
-							</span>
+						<div class="[ form-group ]">
+							<input type="checkbox" name="fancy-checkbox-primary" id="switch-id-vault" autocomplete="off" />
+							<div class="[ btn-group ]">
+								<label for="fancy-checkbox-primary" class="[ btn btn-primary ]">
+									<span class="[ glyphicon glyphicon-ok ]"></span>
+									<span> </span>
+								</label>
+								<label for="fancy-checkbox-primary" class="[ btn btn-default ]">
+									VAULT
+								</label>
+							</div>
 							<div id="id-vault-box" style="display:none;">
 								<input type="text" class="form-control" id="inputVault" name="vault" placeholder="MITH(Mithril)">
 							</div>
