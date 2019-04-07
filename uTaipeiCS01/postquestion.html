@@ -107,17 +107,11 @@ $def with (static)
 							<label for="inputPeriod"> Validity Period</label>
 							<input type="text" class="form-control" id="inputPeriod" name="period" placeholder="less than 5(Unit: Day)" required>
 						</div>
-						<div class="[ form-group ]">
-							<input type="checkbox" name="fancy-checkbox-primary" id="fancy-checkbox-primary" autocomplete="off" />
-							<div class="[ btn-group ]">
-								<label for="fancy-checkbox-primary" class="[ btn btn-primary ]">
-									<span class="[ glyphicon glyphicon-ok ]"></span>
-									<span> </span>
-								</label>
-								<label for="fancy-checkbox-primary" class="[ btn btn-default ]">
-									VAULT
-								</label>
-							</div>
+						<div class="form-group">
+							<span class="switch">
+								<input type="checkbox" class="switch" id="switch-id-vault">
+								<label for="switch-id">VAULT</label>
+							</span>
 						</div>
 						<div class="form-group">
 							<label for="inputContent">Content</label>
