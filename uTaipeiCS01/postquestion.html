@@ -73,20 +73,63 @@ $def with (static)
                 </div>
             </div>
     </section>
-    <section class="intro">
+    <section>
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 col-md-12 ">
-                    <div class="gravatar">
-                            <h2>Not yet !!!</h2>
-                            <p class="lead">
-							/////postQuestion.html////
-                            </p>
-                    </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<form action="/command/postQuestion" method="post">
+						<h1>Post Question</h1>
+						<br>
+						<div class="form-group">
+							<label for="inputSubject">Subject</label>
+							<textarea class="form-control" id="inputSubject" name="subject" maxlength="500" rows="3" style="width:100%;" required></textarea>
+						</div>
+						<div class="form-group">
+							<label for="inputType">Type</label>
+							<select iclass="form-control" d="inputType" name="type" size="4" multiple required>
+								<option value="Education">Education</option>
+								<option value="Computer">Computer</option>
+								<option value="Healthy">Healthy</option>
+								<option value="Science">Science</option>
+								<option value="Travel">Travel</option>
+								<option value="Beauty">Beauty</option>
+								<option value="Sport">Sport</option>
+								<option value="Music">Music</option>
+								<option value="Art">Art</option>
+								<option value="Game">Game</option>
+								<option value="Food">Food</option>
+								<option value="Law">Law</option>
+								<option value="Car">Car</option>
+								<option value="Pet">Pet</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="inputPeriod"> Validity Period (Unit: Day)</label>
+							<input type="text" class="form-control" id="inputPeriod" name="period" placeholder="less than 5" required>
+						</div>
+						<div class="[ form-group ]">
+							<input type="checkbox" name="fancy-checkbox-primary" id="fancy-checkbox-primary" autocomplete="off" />
+							<div class="[ btn-group ]">
+								<label for="fancy-checkbox-primary" class="[ btn btn-primary ]">
+									<span class="[ glyphicon glyphicon-ok ]"></span>
+									<span> </span>
+								</label>
+								<label for="fancy-checkbox-primary" class="[ btn btn-default active ]">
+									VAULT
+								</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="inputContent">Content</label>
+							<textarea class="form-control" id="inputContent" name="content" maxlength="500" rows="7" style="width:100%;"></textarea>
+						</div>
+						<button type="submit" class="btn btn-primary btn-block">Sent</button>
+					</form>
                 </div>
             </div>
         </div>
     </section>
+	
     <footer>
         <section class="footer1">
             <div class="container">
