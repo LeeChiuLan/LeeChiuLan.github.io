@@ -25,12 +25,15 @@ $def with (static)
     </script>
 	<script type="text/javascript">
 	function toggle_visibility(id) {
-		alert(id);
        var e = document.getElementById(id);
-       if(e.style.display == 'block')
+       if(e.style.display == 'block'){
+		alert('block');
           e.style.display = 'none';
-       else
+		  }
+       else{
           e.style.display = 'block';
+		alert('none');
+		}
     }
 	</script>
 </head>
