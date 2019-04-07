@@ -21,17 +21,17 @@ $def with (static)
                     $('nav').removeClass('fixed');
                 }
             });
-			$(function () {
-				$("#fancy-checkbox-primary").click(function () {
-					if ($(this).is(":checked")) {
-						$("#id-vault-box").show();
-					} else {
-						$("#id-vault-box").hide();
-					}
-			});
-    });
-
         });
+		
+		$$(document).ready(function(){
+			$('#fancy-checkbox-primary').change(function(){
+				if(this.checked)
+					$('#id-vault-box').fadeIn('slow');
+				else
+					$('#id-vault-box').fadeOut('slow');
+
+			});
+		});
     </script>
 	<script type="text/javascript">
 	function toggle_visibility(id) {
