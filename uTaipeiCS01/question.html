@@ -139,7 +139,9 @@ $def with (static)
 										</div>
 										<div align="right">
 											<a class="btn btn-labeled btn-success">
-												<span class="btn-label"><i class="glyphicon glyphicon-thumbs-up"></i></span>讚</a>
+												<span class="btn-label"><i class="glyphicon glyphicon-thumbs-up"></i></span>Like</a>
+											<a class="btn btn-labeled btn-success">
+												<span class="btn-label"><i class="glyphicon glyphicon-star-empty"></i></span>Star</a>
 										</div>
 								</div>
 								<div class="list-group-item">
@@ -157,18 +159,21 @@ $def with (static)
 										</div>
 										<div align="right">
 											<a class="btn btn-labeled btn-success">
-												<span class="btn-label"><i class="glyphicon glyphicon-thumbs-up"></i></span>讚</a>
+												<span class="btn-label"><i class="glyphicon glyphicon-thumbs-up"></i></span>Like</a>
+											<a class="btn btn-labeled btn-success">
+												<span class="btn-label"><i class="glyphicon glyphicon-star-empty"></i></span>Star</a>
 										</div>
 								</div>
 								<div class="list-group-item">
-									<div>My Answer</div>
+									<div>add Answer</div><br>
+										<a href="#">
+											<img src="/static/images/person_ans.png" class="pull-left photo" alt="Magicq"/>
+										</a>
 									<div class="add-answer-box">
-										<div class="ya-input-box  D-n" role="region" aria-hidden="true" aria-live="polite">
-											<form autocomplete="off">
-											<div class=" Mb-10 Bdx-1b">
+										<div>
+											<form action="/event/answer" method="post">
 												<div>
-													<textarea aria-label="新增您的解答" placeholder="新增您的解答" maxlength="500"></textarea>
-            
+													<textarea placeholder="Add your answer" maxlength="500"></textarea>
 												</div>
 												<div class="Bfc Bdtx-1g Bgc-fc P-10">
 													<div class="Fl-end">
@@ -176,7 +181,6 @@ $def with (static)
 														<span role="button" tabindex="0" class="Cur-p Ol-n btn-default Px-13 Py-6 ya-cancel">取消</span>
 													</div>
 												</div>
-											</div>
 											</form>
 										</div>
 									</div>
