@@ -22,6 +22,10 @@ $def with (static)
                 }
             });
         });
+		
+		function toggler(divId) {
+			$("#" + divId).toggle();
+		}
     </script>
 </head>
 
@@ -98,10 +102,45 @@ $def with (static)
                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
 					<div class="list-group" align="left">
 						<div class="list-group-item">
-							<a href="#">
-								<h4 class="list-group-item-heading">What is CSS?</h4>
+							<a href="/link/question">
+								<h4 class="list-group-item-heading">墾丁到高雄班車發車時間?</h4>
 							</a>
-							<p class="list-group-item-text">CSS stands for Cascading Style Sheet. CSS allows you to specify various style properties for a given HTML element such as colors, backgrounds, fonts etc.</p>
+							<p class="list-group-item-text">想請問大大，我4/6日要去墾丁工作，上網查了時間末班車到高雄的時間是晚上7點，請問有人知道在墾丁哪裡搭有晚上7點後到高雄的車子嗎～謝謝</p>
+							<div>
+								<a href="#">Travel</a>
+								<span >-</span><span>1星期前</span>
+							</div>
+								<a href="#" onclick="toggler('add_answer1');">this is a test</a>
+									<div class="add-answer-box hidden" id="add_answer1">
+										<a href="#">
+											<img src="/static/images/person_ans.png" class="pull-left photo" alt="Magicq"/>+
+										</a>
+										<p>to Answer</p>
+										<div>
+											<form action="/event/answer" method="post">
+												<div>
+													<textarea placeholder="Add your answer" maxlength="500" rows="5" style="width:100%;"></textarea>
+												</div>
+												<div>
+													<div>
+														<br>
+														<button type="submit" class="btn btn-primary">Submit</button>
+														<button type="reset" class="btn btn-outline-secondary">Cancel</button>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+						</div>
+						<div class="list-group-item">
+							<a href="#">
+								<h4 class="list-group-item-heading">橫突L3骨折相關問題?</h4>
+							</a>
+							<p class="list-group-item-text">想請問短夾橫突骨頭有什麼平時需要注意的部分呢？謝謝 希望大家骨頭能趕快癒合</p>
+							<div>
+								<a href="#">Healthy</a>
+								<span >-</span><span>33分鐘前</span>
+							</div>
 						</div>
 						<div class="list-group-item">
 							<a href="#">
