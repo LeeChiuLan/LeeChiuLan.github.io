@@ -24,9 +24,9 @@ $def with (static)
 			
         $("#switch-id-vault").click(function(){
             if($(this).is(':checked')){
-					$('#id-vault-box').show();
+					$('#id-vault-box').css("visibility","visible");
 				} else {
-					$('#id-vault-box').hide();
+					$('#id-vault-box').css("visibility","hidden");
 				}
 			});
 
@@ -128,11 +128,11 @@ $def with (static)
 						<div class="[ form-group ]">
 							<input type="checkbox" name="fancy-checkbox-primary" id="switch-id-vault" autocomplete="off" />
 							<div class="[ btn-group ]">
-								<label for="fancy-checkbox-primary" class="[ btn btn-primary ]">
+								<label for="switch-id-vault" class="[ btn btn-primary ]">
 									<span class="[ glyphicon glyphicon-ok ]"></span>
 									<span> </span>
 								</label>
-								<label for="fancy-checkbox-primary" class="[ btn btn-default ]">
+								<label for="switch-id-vault" class="[ btn btn-default ]">
 									VAULT
 								</label>
 							</div>
