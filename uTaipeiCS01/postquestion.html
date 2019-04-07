@@ -21,14 +21,15 @@ $def with (static)
                     $('nav').removeClass('fixed');
                 }
             });
-			
-        $("#fancy-checkbox-primary").click(function(){
-            if($(this).is(':checked')){
-					$('#id-vault-box').css("visibility","visible");
-				} else {
-					$('#id-vault-box').css("visibility","hidden");
-				}
+			$(function () {
+				$("#fancy-checkbox-primary").click(function () {
+					if ($(this).is(":checked")) {
+						$("#id-vault-box").show();
+					} else {
+						$("#id-vault-box").hide();
+					}
 			});
+    });
 
         });
     </script>
@@ -125,7 +126,7 @@ $def with (static)
 							<label for="inputPeriod"> Validity Period</label>
 							<input type="text" class="form-control" id="inputPeriod" name="period" placeholder="less than 5 (Unit: Day)" required>
 						</div>
-						<div class="[ form-group ]">
+						<div class="form-group">
 							
 							<input type="checkbox" name="fancy-checkbox-primary" id="fancy-checkbox-primary" autocomplete="off" />
 							<div class="[ btn-group ]">
@@ -136,7 +137,9 @@ $def with (static)
 								<label for="fancy-checkbox-primary" class="[ btn btn-default ]">
 									VAULT
 								</label>
-								<input type="text" class="form-control" id="inputVault" name="vault" placeholder="MITH(Mithril)">
+							</div>
+							<div id="id-vault-box" style="display: none">
+								<input type="text" class="form-control" id="inputVault" name="vault" placeholder="MITH(Mithril) maxlength="50">
 							</div>
 						</div>
 						<div class="form-group">
