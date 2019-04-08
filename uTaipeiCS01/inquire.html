@@ -12,7 +12,7 @@ $def with (static)
     <link rel="stylesheet" href="/static/css/MyBootstrap/base.css">
     <link rel="stylesheet" href="/static/css/style.css">
     <script src="/static/jquery/axjs0.js"></script>
-    <script>
+     <script>
         $$(document).ready(function() {  
             $$(window).bind('scroll', function() { 
                 if ($$(window).scrollTop() > 600) {
@@ -23,6 +23,15 @@ $def with (static)
             });
         });
     </script>
+	<script type="text/javascript">
+	function toggle_visibility(id) {
+       var e = document.getElementById(id);
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
+    }
+	</script>
 </head>
 
 <body>
@@ -39,7 +48,7 @@ $def with (static)
                             <a class="navbar-brand" href="/">Home</a>
                         </div>		
 						<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-							<form action="" class="search-form">
+							<form action="/command/inquire" class="search-form">
 								<div class="form-group has-feedback">
 									<label for="search" class="sr-only">Search</label>
 									<input type="text" class="form-control" name="search" id="search" placeholder="search">
@@ -76,14 +85,201 @@ $def with (static)
     <section class="intro">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 col-md-12 ">
-                    <div class="gravatar">
-                            <h2>Not yet !!!</h2>
-                            <p class="lead">
-							/////inquire.html////
-                            </p>
-                    </div>
-                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">                    
+					<div class="list-group">
+						<a href="#" class="list-group-item active"> Type </a>
+						<a href="#" class="list-group-item"> Education </a>
+						<a href="#" class="list-group-item"> Computer </a>
+						<div class="form-group">
+							<label for="gender1" class="col-sm-2 control-label">Gender:</label>
+							<div class="col-sm-2">
+							<select class="form-control inputstl" id="gender1">
+								<option>Male</option>
+								<option>Female</option>
+							</select>
+							</div>
+						</div>      
+
+						<select class="form-control">
+							<option value="one">One</option>
+							<option value="two">Two</option>
+							<option value="three">Three</option>
+							<option value="four">Four</option>
+							<option value="five">Five</option>
+						</select>
+						<p class="list-group-item"> Healthy </p>
+						<h3 class="list-group-item">By Type</h3>
+							<ul>
+								<li class="dropdown" style="list-style: none;">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials and Tips <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a href="https://www.jquery-az.com/bootstrap-tips-tutorials/">Bootstrap</a></li>
+										<li><a href="https://www.jquery-az.com/jquery-tips/">jQuery</a></li>
+										<li><a href="https://www.jquery-az.com/php-tutorials/">PHP</a></li>
+										<li class="divider"></li>
+										<li><a href="https://www.jquery-az.com/css-tutorials/">CSS</a></li>
+										<li class="divider"></li>
+										<li><a href="https://www.jquery-az.com/html-tutorials/">HTML</a></li>
+									</ul>
+								</li>
+							</ul>
+					</div>
+				</div>
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+					<div class="list-group" align="left">
+						<div class="list-group-item">
+							<a href="/link/question">
+								<h4 class="list-group-item-heading">墾丁到高雄班車發車時間?</h4>
+							</a>
+							<p class="list-group-item-text">想請問大大，我4/6日要去墾丁工作，上網查了時間末班車到高雄的時間是晚上7點，請問有人知道在墾丁哪裡搭有晚上7點後到高雄的車子嗎～謝謝</p>
+							<div>
+								<a href="#">Travel</a>
+								<span >-</span><span>1星期前</span>
+							</div>
+							<div class="add-answer-box">
+										<a href="#" onclick="toggle_visibility('add_answer1');">
+											<img src="/static/images/person_ans.png" class="pull-left photo" alt="Magicq"/>+
+											<p>to Answer</p>
+										</a>
+										<div class="add-answer-box" id="add_answer1" style="display:none;">
+											<form action="/event/answer" method="post">
+												<div>
+													<textarea placeholder="Add your answer" maxlength="500" rows="5" style="width:100%;"></textarea>
+												</div>
+												<div>
+													<div>
+														<br>
+														<button type="submit" class="btn btn-primary">Submit</button>
+														<button type="reset" class="btn btn-outline-secondary">Cancel</button>
+													</div>
+												</div>
+											</form>
+										</div>
+							</div>		
+						</div>
+						<div class="list-group-item">
+							<a href="#">
+								<h4 class="list-group-item-heading">橫突L3骨折相關問題?</h4>
+							</a>
+							<p class="list-group-item-text">想請問短夾橫突骨頭有什麼平時需要注意的部分呢？謝謝 希望大家骨頭能趕快癒合</p>
+							<div>
+								<a href="#">Healthy</a>
+								<span >-</span><span>33分鐘前</span>
+							</div>
+							<div class="add-answer-box">
+										<a href="#" onclick="toggle_visibility('add_answer2');">
+											<img src="/static/images/person_ans.png" class="pull-left photo" alt="Magicq"/>+
+											<p>to Answer</p>
+										</a>
+										<div class="add-answer-box" id="add_answer2" style="display:none;">
+											<form action="/event/answer" method="post">
+												<div>
+													<textarea placeholder="Add your answer" maxlength="500" rows="5" style="width:100%;"></textarea>
+												</div>
+												<div>
+													<div>
+														<br>
+														<button type="submit" class="btn btn-primary">Submit</button>
+														<button type="reset" class="btn btn-outline-secondary">Cancel</button>
+													</div>
+												</div>
+											</form>
+										</div>
+							</div>
+						</div>
+						<div class="list-group-item">
+							<a href="#">
+								<h4 class="list-group-item-heading">黑鯊2「遊」到<em>香港</em>啦</h4>
+							</a>
+							<p class="list-group-item-text">上月中時在中國大陸發表的黑鯊2 遊戲手機，現已正式在<em>香港</em>上架發售。.39 吋低頻 ...</p>
+							<div>
+								<a href="#">Game</a>
+								<span >-</span><span>7分鐘前</span>
+							</div>
+							<div class="add-answer-box">
+										<a href="#" onclick="toggle_visibility('add_answer3');">
+											<img src="/static/images/person_ans.png" class="pull-left photo" alt="Magicq"/>+
+											<p>to Answer</p>
+										</a>
+										<div class="add-answer-box" id="add_answer3" style="display:none;">
+											<form action="/event/answer" method="post">
+												<div>
+													<textarea placeholder="Add your answer" maxlength="500" rows="5" style="width:100%;"></textarea>
+												</div>
+												<div>
+													<div>
+														<br>
+														<button type="submit" class="btn btn-primary">Submit</button>
+														<button type="reset" class="btn btn-outline-secondary">Cancel</button>
+													</div>
+												</div>
+											</form>
+										</div>
+							</div>
+						</div>
+						<div class="list-group-item">
+							<a href="#">
+								<h3 class="list-group-item-heading">黑鯊2「遊」到<em>香港</em>啦</h4>
+							</a>
+							<p class="list-group-item-text">上月中時在中國大陸發表的黑鯊2 遊戲手機，現已正式在<em>香港</em>上架發售。.39 吋低頻 ...</p>
+							<div>
+								<a href="#">Game</a>
+								<span >-</span><span>7分鐘前</span>
+							</div>
+							<div class="add-answer-box">
+										<a href="#" onclick="toggle_visibility('add_answer4');">
+											<img src="/static/images/person_ans.png" class="pull-left photo" alt="Magicq"/>+
+											<p>to Answer</p>
+										</a>
+										<div class="add-answer-box" id="add_answer4" style="display:none;">
+											<form action="/event/answer" method="post">
+												<div>
+													<textarea placeholder="Add your answer" maxlength="500" rows="5" style="width:100%;"></textarea>
+												</div>
+												<div>
+													<div>
+														<br>
+														<button type="submit" class="btn btn-primary">Submit</button>
+														<button type="reset" class="btn btn-outline-secondary">Cancel</button>
+													</div>
+												</div>
+											</form>
+										</div>
+							</div>
+						</div>
+					</div>
+				
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<div class="thumbnail">
+							<a href="https://wujpkimo.github.io/" target="_blank">
+							<div class="caption">
+								<h3><span class="glyphicon glyphicon-link"></span>Jason Wu</h3>                            
+							</div>
+							<img src="image/url/wujpkimo.png" alt="">
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<div class="thumbnail">
+							<a href="https://leoweng.github.io/" target="_blank">
+							<div class="caption">
+								<h3><span class="glyphicon glyphicon-link"></span>翁聖竑</h3>                            
+							</div>
+							<img src="image/url/leoweng.png" alt="">
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<div class="thumbnail">
+							<a href="https://yilingleednd.github.io/" target="_blank">
+							<div class="caption">
+								<h3><span class="glyphicon glyphicon-link"></span>Yiling Lee</h3>                            
+							</div>
+							<img src="image/url/yilingleednd.png" alt="">
+							</a>
+						</div>
+					</div>
+				</div>
             </div>
         </div>
     </section>
