@@ -78,133 +78,53 @@ $def with (static)
         <div class="container">
             <div class="row"  align="left">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<form action="/event/setting" method="post">
 					<h1>User Profile</h1>
-					<div class="list-group">
-						<a href="/event/setting" class="list-group-item">
-						<div class="row">
-							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-								<span class="glyphicon glyphicon-picture"></span> Picture
-							</div>
-							<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-								<img data-id="4Q7LOM" class="pull-left photo" src="/static/images/person.jpg" alt="詩詩"/>
-							</div>
-							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<span></span>&#62;
-							</div>
-						</div>	
-						</a>
-						<a href="/event/setting" class="list-group-item">
-						<div class="row">
-							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-								<span class="glyphicon glyphicon-user"></span> Name
-							</div>
-							<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-								<span>Jason</span>
-							</div>
-							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<span></span>&#62;
-							</div>
-						</div>	
-						</a>
-						<a href="/event/setting" class="list-group-item">
-						<div class="row">
-							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-								<span class="glyphicon glyphicon-envelope"></span> E-mail
-							</div>
-							<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8"> 
-								<span>json@utaipei.edu.tw</span>
-							</div>
-							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<span></span>&#62;
-							</div>
-						</div>	
-						</a>
-						<a href="/event/setting" class="list-group-item">
-						<div class="row">
-							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-								<span class="glyphicon glyphicon-pencil"></span> Password
-							</div>
-							<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-								<span>••••••••</span>
-							</div>
-							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<span></span>&#62;
-							</div>
-						</div>	
-						</a>
-						<a href="/event/setting" class="list-group-item">
-						<div class="row">
-							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-								<span class="glyphicon glyphicon-time"></span> Birthday
-							</div>
-							<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-								<span></span>
-							</div>
-							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<span></span>&#62;
-							</div>
-						</div>	
-						</a>
+					<div class="form-group">
+						<label for="inputPicture" class="control-label col-xs-2">Picture</label>
+						<div class="col-xs-10">
+							<input type="file" class="form-control" id="inputPicture" name="picture">
+						</div>
 					</div>
-					<label>Contact Information</label>
-					<div class="list-group" align="left">
-						<a href="/event/setting" class="list-group-item">
-						<div class="row">
-							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-								<span class="glyphicon glyphicon-phone"></span>Cell Phone
-							</div>
-							<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-								<span>886-2-972123456</span>
-							</div>
-							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<span></span>&#62;
-							</div>
-						</div>	
-						</a>
-						<a href="/event/setting" class="list-group-item">
-						<div class="row">
-							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-								<span class="glyphicon glyphicon-phone-alt"></span>Home Phone
-							</div>
-							<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-								<span>886-2-54321789</span>
-							</div>
-							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<span></span>&#62;
-							</div>
-						</div>	
-						</a>
-						<a href="/event/setting" class="list-group-item">
-						<div class="row">
-							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-								<span class="glyphicon glyphicon-envelope"></span> Email
-							</div>
-							<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-								<span>json@utaipei.edu.tw</span>
-							</div>
-							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<span></span>&#62;
-							</div>
-						</div>	
-						</a>
+					<div class="form-group">
+						<label for="inputName" class="control-label col-xs-2">Username</label>
+						<div class="col-xs-10">
+							<input type="text" class="form-control" id="inputUsername" placeholder="Username" name="username" value="Jason">
+						</div>
 					</div>
-					<label>Select subjects</label>
-					<div class="list-group" align="left">
-						<a href="/event/setting" class="list-group-item">
-						<div class="row">
-							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-								<span class="glyphicon glyphicon-heart"></span>
-							</div>
-							<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-								<span>Computer, Science, Pet</span>
-							</div>
-							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<span></span>&#62;
-							</div>
-						</div>	
-						</a>
+						
+					<div class="form-group">
+						<label for="inputEmail" class="control-label col-xs-2">Email</label>
+						<div class="col-xs-10">
+							<input type="email" class="form-control" id="inputEmail" placeholder="Email" name="emal" required value="json@utaipei.edu.tw">
+						</div>
 					</div>
-                </div>
+					<div class="form-group">
+						<label for="inputPassword" class="control-label col-xs-2">Password</label>
+						<div class="col-xs-10">
+							<input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputBirthday" class="control-label col-xs-2">Birthday</label>
+						<div class="col-xs-10">
+							<input type="date" class="form-control" id="inputBirthday" placeholder="Birthday" name="birthday">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputPhone" class="control-label col-xs-2">Cell Phone</label>
+						<div class="col-xs-10">
+							<input type="tel" class="form-control" id="inputCellPhone" placeholder="Cell Phon" name="cellphone">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputPhone" class="control-label col-xs-2">Home Phone</label>
+						<div class="col-xs-10">
+							<input type="tel" class="form-control" id="inputHomePhone" placeholder="Home Phon" name="homephone">
+						</div>
+					</div>	
+				</form>	
+				</div>
             </div>
         </div>
     </section>
