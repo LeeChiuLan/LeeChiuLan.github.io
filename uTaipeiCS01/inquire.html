@@ -129,7 +129,25 @@ $def with (static)
 							<option value="Car">Car</option>
 							<option value="Pet">Pet</option>
 						</select>
-						<select class="form-control" multiple = "multiple" size = "10">
+						<p class="list-group-item"> Healthy </p>
+						<h3 class="list-group-item">By Type</h3>
+							<ul>
+								<li class="dropdown" style="list-style: none;">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials and Tips </a>
+									<ul class="dropdown-menu">
+										<li><a href="https://www.jquery-az.com/bootstrap-tips-tutorials/">Bootstrap</a></li>
+										<li><a href="https://www.jquery-az.com/jquery-tips/">jQuery</a></li>
+										<li><a href="https://www.jquery-az.com/php-tutorials/">PHP</a></li>
+										<li class="divider"></li>
+										<li><a href="https://www.jquery-az.com/css-tutorials/">CSS</a></li>
+										<li class="divider"></li>
+										<li><a href="https://www.jquery-az.com/html-tutorials/">HTML</a></li>
+									</ul>
+								</li>
+							</ul>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="toggle_visibility('type_id_select');">by Type </a>
+						<div id="type_id_select" class="dropdown" style="list-style: none;">
+						<select class="form-control" multiple = "multiple" size = "4">
 							<option value="Education">Education</option>
 							<option value="Computer">Computer</option>
 							<option value="Healthy">Healthy</option>
@@ -150,22 +168,7 @@ $def with (static)
 							<option value="four">Four</option>
 							<option value="five">Five</option>
 						</select>
-						<p class="list-group-item"> Healthy </p>
-						<h3 class="list-group-item">By Type</h3>
-							<ul>
-								<li class="dropdown" style="list-style: none;">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials and Tips <b class="caret"></b></a>
-									<ul class="dropdown-menu">
-										<li><a href="https://www.jquery-az.com/bootstrap-tips-tutorials/">Bootstrap</a></li>
-										<li><a href="https://www.jquery-az.com/jquery-tips/">jQuery</a></li>
-										<li><a href="https://www.jquery-az.com/php-tutorials/">PHP</a></li>
-										<li class="divider"></li>
-										<li><a href="https://www.jquery-az.com/css-tutorials/">CSS</a></li>
-										<li class="divider"></li>
-										<li><a href="https://www.jquery-az.com/html-tutorials/">HTML</a></li>
-									</ul>
-								</li>
-							</ul>
+						</div>
 					</div>
 				</div>
                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
