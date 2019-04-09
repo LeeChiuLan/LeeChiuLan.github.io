@@ -3,8 +3,6 @@ $def with (static, acc)
 <html lang="en">
 
 <head>
-    <input type="hidden" name="a" id="a" value="$static"> 
-    <input type="hidden" name="a" id="a" value="$acc">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
     <title>skr Information City</title>
@@ -14,8 +12,7 @@ $def with (static, acc)
     <link rel="stylesheet" href="/static/css/MyBootstrap/base.css">
     <link rel="stylesheet" href="/static/css/style.css">
     <script src="/static/jquery/axjs0.js"></script>
-	<script type="text/javascript" src="/static/jquery/skrscripts.js"></script>
-    <script>
+     <script>
         $$(document).ready(function() {  
             $$(window).bind('scroll', function() { 
                 if ($$(window).scrollTop() > 600) {
@@ -26,6 +23,23 @@ $def with (static, acc)
             });
         });
     </script>
+	<script type="text/javascript">
+	function toggle_visibility(id) {
+       var e = document.getElementById(id);
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
+    }
+	</script>
+<style>
+.list-group-item.active {
+  z-index: 2;
+  color: #FFFF79;
+  background-color: #38874A;
+  border-color: #255A31;
+}
+</style>
 </head>
 
 <body>
@@ -81,14 +95,162 @@ $def with (static, acc)
     <section class="intro">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 col-md-12 ">
-                    <div class="gravatar">
-                            <h2>Not yet !!!</h2>
-                            <p class="lead">
-							/////favorite.html////
-                            </p>
-                    </div>
-                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">                    
+					<div class="list-group">
+						<a class="list-group-item active"> Type </a>
+						<a href="#" class="list-group-item"> All </a>
+						<a href="#" class="list-group-item" onclick="toggle_visibility('type_id_select');">Type &#x25BC;</a>
+						<div id="type_id_select" style="list-style: none;">
+							<select class="form-control" multiple = "multiple" size = "4">
+								<option value="Education">Education</option>
+								<option value="Computer">Computer</option>
+								<option value="Healthy">Healthy</option>
+								<option value="Science">Science</option>
+								<option value="Travel">Travel</option>
+								<option value="Beauty">Beauty</option>
+								<option value="Sport">Sport</option>
+								<option value="Music">Music</option>
+								<option value="Art">Art</option>
+								<option value="Game">Game</option>
+								<option value="Food">Food</option>
+								<option value="Law">Law</option>
+								<option value="Car">Car</option>
+								<option value="Pet">Pet</option>
+							</select>
+						</div>
+					</div>
+					<div class="list-group">
+						<a class="list-group-item active"> Time</a>
+						<a href="#" class="list-group-item"> Yesterday </a>
+						<a href="#" class="list-group-item"> Past week </a>
+						<a href="#" class="list-group-item"> Past month </a>
+						<a href="#" class="list-group-item"> Past year </a>
+					</div>
+				</div>
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+					<div class="list-group" align="left">
+						<div class="list-group-item">
+							<a href="/link/question">
+								<h4 class="list-group-item-heading">墾丁到高雄班車發車時間?</h4>
+							</a>
+							<p class="list-group-item-text">想請問大大，我4/6日要去墾丁工作，上網查了時間末班車到高雄的時間是晚上7點，請問有人知道在墾丁哪裡搭有晚上7點後到高雄的車子嗎～謝謝</p>
+							<div>
+								<a href="#">Travel</a>
+								<span >-</span><span>1星期前</span>
+							</div>
+							<div class="add-answer-box">
+										<a href="#" onclick="toggle_visibility('add_answer1');">
+											<img src="/static/images/person_ans.png" class="pull-left photo" alt="Magicq"/>+
+											<p>to Answer</p>
+										</a>
+										<div class="add-answer-box" id="add_answer1" style="display:none;">
+											<form action="/event/answer" method="post">
+												<div>
+													<textarea placeholder="Add your answer" maxlength="500" rows="5" style="width:100%;"></textarea>
+												</div>
+												<div>
+													<div>
+														<br>
+														<button type="submit" class="btn btn-primary">Submit</button>
+														<button type="reset" class="btn btn-outline-secondary">Cancel</button>
+													</div>
+												</div>
+											</form>
+										</div>
+							</div>		
+						</div>
+						<div class="list-group-item">
+							<a href="#">
+								<h4 class="list-group-item-heading">橫突L3骨折相關問題?</h4>
+							</a>
+							<p class="list-group-item-text">想請問短夾橫突骨頭有什麼平時需要注意的部分呢？謝謝 希望大家骨頭能趕快癒合</p>
+							<div>
+								<a href="#">Healthy</a>
+								<span >-</span><span>33分鐘前</span>
+							</div>
+							<div class="add-answer-box">
+										<a href="#" onclick="toggle_visibility('add_answer2');">
+											<img src="/static/images/person_ans.png" class="pull-left photo" alt="Magicq"/>+
+											<p>to Answer</p>
+										</a>
+										<div class="add-answer-box" id="add_answer2" style="display:none;">
+											<form action="/event/answer" method="post">
+												<div>
+													<textarea placeholder="Add your answer" maxlength="500" rows="5" style="width:100%;"></textarea>
+												</div>
+												<div>
+													<div>
+														<br>
+														<button type="submit" class="btn btn-primary">Submit</button>
+														<button type="reset" class="btn btn-outline-secondary">Cancel</button>
+													</div>
+												</div>
+											</form>
+										</div>
+							</div>
+						</div>
+						<div class="list-group-item">
+							<a href="#">
+								<h4 class="list-group-item-heading">黑鯊2「遊」到<em>香港</em>啦</h4>
+							</a>
+							<p class="list-group-item-text">上月中時在中國大陸發表的黑鯊2 遊戲手機，現已正式在<em>香港</em>上架發售。.39 吋低頻 ...</p>
+							<div>
+								<a href="#">Game</a>
+								<span >-</span><span>7分鐘前</span>
+							</div>
+							<div class="add-answer-box">
+										<a href="#" onclick="toggle_visibility('add_answer3');">
+											<img src="/static/images/person_ans.png" class="pull-left photo" alt="Magicq"/>+
+											<p>to Answer</p>
+										</a>
+										<div class="add-answer-box" id="add_answer3" style="display:none;">
+											<form action="/event/answer" method="post">
+												<div>
+													<textarea placeholder="Add your answer" maxlength="500" rows="5" style="width:100%;"></textarea>
+												</div>
+												<div>
+													<div>
+														<br>
+														<button type="submit" class="btn btn-primary">Submit</button>
+														<button type="reset" class="btn btn-outline-secondary">Cancel</button>
+													</div>
+												</div>
+											</form>
+										</div>
+							</div>
+						</div>
+						<div class="list-group-item">
+							<a href="#">
+								<h3 class="list-group-item-heading">黑鯊2「遊」到<em>香港</em>啦</h4>
+							</a>
+							<p class="list-group-item-text">上月中時在中國大陸發表的黑鯊2 遊戲手機，現已正式在<em>香港</em>上架發售。.39 吋低頻 ...</p>
+							<div>
+								<a href="#">Game</a>
+								<span >-</span><span>7分鐘前</span>
+							</div>
+							<div class="add-answer-box">
+										<a href="#" onclick="toggle_visibility('add_answer4');">
+											<img src="/static/images/person_ans.png" class="pull-left photo" alt="Magicq"/>+
+											<p>to Answer</p>
+										</a>
+										<div class="add-answer-box" id="add_answer4" style="display:none;">
+											<form action="/event/answer" method="post">
+												<div>
+													<textarea placeholder="Add your answer" maxlength="500" rows="5" style="width:100%;"></textarea>
+												</div>
+												<div>
+													<div>
+														<br>
+														<button type="submit" class="btn btn-primary">Submit</button>
+														<button type="reset" class="btn btn-outline-secondary">Cancel</button>
+													</div>
+												</div>
+											</form>
+										</div>
+							</div>
+						</div>
+					</div>
+				</div>
             </div>
         </div>
     </section>
