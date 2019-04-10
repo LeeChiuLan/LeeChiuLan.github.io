@@ -26,15 +26,19 @@ $def with (static, name)
     </script>
 	<script>
 	function myFunction() {
-		var element = document.getElementById("user_icon");
-		element.innerHTML = "New Heading";
+		var afrom=document.getElementById("afrom");
+		var username=document.getElementById("aname");
+		var usertag = document.getElementById("user_icon");
+			if (afrom.length > 1){
+				usertag.innerHTML = username.value;
+			}
 		}
 	</script>
 </head>
 
 <body onload="myFunction()">
-	<input type="hidden" name="a" id="a" value="$static"> 
-    <input type="hidden" name="a" id="a" value="$name">
+	<input type="hidden" name="afrom" id="afrom" value="$static"> 
+    <input type="hidden" name="aname" id="aname" value="$name">
     <section class="main-menu">
             <div class="container">
                 <div class="row">
