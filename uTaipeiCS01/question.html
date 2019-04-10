@@ -1,4 +1,4 @@
-$def with (static, acc)
+$def with (static, name)
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,8 +27,8 @@ $def with (static, acc)
 </head>
 
 <body>
-    <input type="hidden" name="a" id="a" value="$static"> 
-    <input type="hidden" name="a" id="a" value="$acc">
+	<input type="hidden" name="a" id="a" value="$static"> 
+    <input type="hidden" name="a" id="a" value="$name">
     <section class="main-menu">
             <div class="container">
                 <div class="row">
@@ -176,7 +176,7 @@ $def with (static, acc)
 										<div>
 											<form action="/event/answer" method="post">
 												<div>
-													<textarea placeholder="Add your answer" maxlength="500" rows="5" style="width:100%;"></textarea>
+													<textarea name="content" id="content" placeholder="Add your answer" maxlength="500" rows="5" style="width:100%;"></textarea>
 												</div>
 												<div>
 													<div>
@@ -185,6 +185,8 @@ $def with (static, acc)
 														<button type="reset" class="btn btn-outline-secondary">Cancel</button>
 													</div>
 												</div>
+												<input type="hidden" name="username" id="username" value="$name">
+												<input type="hidden" name="title" id="title" value="墾丁到高雄班車發車時間?">
 											</form>
 										</div>
 									</div>

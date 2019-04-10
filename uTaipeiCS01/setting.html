@@ -1,4 +1,4 @@
-$def with (static, acc)
+$def with (static, username, email, password, callphone, homephone)
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +28,11 @@ $def with (static, acc)
 
 <body>
     <input type="hidden" name="a" id="a" value="$static"> 
-    <input type="hidden" name="a" id="a" value="$acc">
+    <input type="hidden" name="a" id="a" value="$username">
+    <input type="hidden" name="a" id="a" value="$email"> 
+    <input type="hidden" name="a" id="a" value="$password">   
+    <input type="hidden" name="a" id="a" value="$callphone"> 
+    <input type="hidden" name="a" id="a" value="$homephone"> 
     <section class="main-menu">
             <div class="container">
                 <div class="row">
@@ -91,31 +95,31 @@ $def with (static, acc)
 						<div class="form-group">
 							<label for="inputName" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-2">Username</label>
 							<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-								<input type="text" class="form-control" id="inputUsername" placeholder="Username" name="username" value="Jason">
+								<input type="text" class="form-control" id="inputUsername" placeholder="Username" name="username" value="$username">
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="inputEmail" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-2">Email</label>
 							<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-								<input type="email" class="form-control" id="email" placeholder="Email" name="email" required value="json@utaipei.edu.tw">
+								<input type="email" class="form-control" id="email" placeholder="Email" name="email" required value="$email">
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="inputPassword" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-2">Password</label>
 							<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-								<input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+								<input type="password" class="form-control" id="password" placeholder="Password" name="password" required value="$password">
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="inputPhone" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-2">Cell Phone</label>
 							<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-								<input type="tel" class="form-control" id="inputCellPhone" placeholder="Cell Phon" name="cellphone">
+								<input type="tel" class="form-control" id="callphone" placeholder="Cell Phon" name="callphone" value="$callphone">
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="inputPhone" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-2">Home Phone</label>
 							<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-								<input type="tel" class="form-control" id="inputHomePhone" placeholder="Home Phon" name="homephone">
+								<input type="tel" class="form-control" id="homephone" placeholder="Home Phon" name="homephone" value="$homephone">
 							</div>
 						</div>
 						<div align="center">
