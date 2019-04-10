@@ -25,11 +25,14 @@ $def with (static, name)
         });
     </script>
 	<script>
-		document.getElementById("user_icon").innerHTML = "New text!";
+	function myFunction() {
+		var element = document.getElementById("user_icon");
+		element.innerHTML = "New Heading";
+		}
 	</script>
 </head>
 
-<body>
+<body onload="myFunction()">
 	<input type="hidden" name="a" id="a" value="$static"> 
     <input type="hidden" name="a" id="a" value="$name">
     <section class="main-menu">
