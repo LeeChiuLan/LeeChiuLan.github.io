@@ -33,12 +33,12 @@ $def with (static, name)
 			if (afrom.value == "f" && username.value == "none"){
 				return;
 			}else{
-				text="<li><a href=\""+"/command/signOut\""+">登出</a></li>";
-			alert(text);
 				usertag.innerHTML = username.value;
-				$('#login_menu').replaceWith(function(n){
-					return "<li><a href=\""+"/command/signOut\""+">登出</a></li>";
-				});
+				logout_li="<li><a href=\""+"/command/signOut\""+">登出</a></li>";
+			alert(text);
+				var logout_tag = document.getElementById("login_menu1");
+				logout_tag.innerHTML = logout_li;
+				$('#login_menu2').hide();
 			}
 		}
 	</script>
@@ -86,7 +86,8 @@ $def with (static, name)
                                             
                                         </ul>
                                     </li>
-									<p id="login_menu">
+									<p id="login_menu1"></p>
+									<p id="login_menu2">
                                     <li><a href="/command/signIn">登入</a></li>
                                     <li><a href="/command/signUp">註冊</a></li>
 									</p>
