@@ -5,7 +5,7 @@ $def with (static, name)
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
-    <title>skr Information City</title>
+    <title>skr Information</title>
     <link rel="stylesheet" href="/static/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <script src="/static/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -25,18 +25,26 @@ $def with (static, name)
         });
     </script>
 	<script>
-	function myFunction() {
-		var afrom=document.getElementById("afrom");
-		var username=document.getElementById("aname");
-		var usertag = document.getElementById("user_icon");
-			if (afrom.length > 1){
+		function onloadFunction() {
+			var afrom=document.getElementById("afrom");
+			var username=document.getElementById("aname");
+			var usertag = document.getElementById("user_icon");
+			
+			if (afrom.value == "f" && username.value == "none"){
+				return;
+			}else{
+				text="<li><a href=\""+"/command/signOut\""+">登出</a></li>";
+			alert(text);
 				usertag.innerHTML = username.value;
+				$('#login_menu').replaceWith(function(n){
+					return "<li><a href=\""+"/command/signOut\""+">登出</a></li>";
+				});
 			}
 		}
 	</script>
 </head>
 
-<body onload="myFunction()">
+<body onload="onloadFunction()">
 	<input type="hidden" name="afrom" id="afrom" value="$static"> 
     <input type="hidden" name="aname" id="aname" value="$name">
     <section class="main-menu">
@@ -66,18 +74,22 @@ $def with (static, name)
                                 <ul class="nav navbar-nav navbar-right">
 									<li><a href="/command/postQuestion">提問</a></li>
                                     <li class="dropdown">
-                                        <a href="#" id="user_icon" class="dropdown-toggle" data-toggle="dropdown" role="button">個人<span class="caret"></span></a>
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+											<span id="user_icon">個人</span><span class="caret"></span>
+										</a>
                                         <ul class="dropdown-menu">
                                             <li><a href="/link/profile">設定</a></li>
                                             <li><a href="#">VAULT</a></li>
                                             <li><a href="#">選項 3</a></li>
                                             <li role="separator" class="divider"></li>
                                             <li><a href="/link/favorite">收藏</a></li>
-                                            <li><a href="/command/signOut">登出</a></li>
+                                            
                                         </ul>
                                     </li>
+									<p id="login_menu">
                                     <li><a href="/command/signIn">登入</a></li>
                                     <li><a href="/command/signUp">註冊</a></li>
+									</p>
                                 </ul>
                             </div>
                         </div>
