@@ -37,7 +37,7 @@ $def with (static, name)
 				logout_li="<li><a href=\""+"/command/signOut\""+">登出</a></li>";
 				logout_tag.innerHTML = logout_li;
 				usertag.innerHTML = username.value;
-				document.getElementById("login_menu1").style.display = 'none';
+				document.getElementById("login_menu2").style.display = 'none';
 			}
 		}
 	</script>
@@ -85,10 +85,10 @@ $def with (static, name)
                                         </ul>
                                     </li>
 									<span id="login_menu1"></span>
-									<p id="login_menu2">
+									<span id="login_menu2">
                                     <li><a href="/command/signIn">登入</a></li>
                                     <li><a href="/command/signUp">註冊</a></li>
-									</p>
+									</span>
                                 </ul>
                             </div>
                         </div>
