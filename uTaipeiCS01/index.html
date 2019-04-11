@@ -35,10 +35,9 @@ $def with (static, name)
 				return;
 			}else{
 				logout_li="<li><a href=\""+"/command/signOut\""+">登出</a></li>";
-			alert(logout_li);
 				logout_tag.innerHTML = logout_li;
 				usertag.innerHTML = username.value;
-				$('#login_menu2').hide();
+				document.getElementById("login_menu1").style.display = 'none';
 			}
 		}
 	</script>
