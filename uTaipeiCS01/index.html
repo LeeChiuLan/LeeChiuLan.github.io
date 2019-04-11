@@ -34,7 +34,7 @@ $def with (static, name)
 			if (afrom.value == "f" && username.value == "none"){
 				return;
 			}else{
-				logout_li="<li style=\"display: inline\"><a href=\""+"/command/signOut\""+">登出</a></li>";
+				logout_li="<a href=\""+"/command/signOut\""+">登出</a>";
 				logout_tag.innerHTML = logout_li;
 				usertag.innerHTML = username.value;
 				//document.getElementByName("login_menu2").style.display = 'none';
@@ -84,10 +84,8 @@ $def with (static, name)
                                             
                                         </ul>
                                     </li>
-									<span id="login_menu1">
-                                    <li name="login_menu2"><a href="/command/signIn">登入</a></li>
+                                    <li><span id="login_menu1"><a href="/command/signIn">登入</a></span></li>
                                     <li name="login_menu2"><a href="/command/signUp">註冊</a></li>
-									</span>
                                 </ul>
                             </div>
                         </div>
