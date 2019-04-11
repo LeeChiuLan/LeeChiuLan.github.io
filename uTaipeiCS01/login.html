@@ -24,11 +24,27 @@ $def with (static, name)
             });
         });
     </script>
+	<script>
+		function onloadFunction() {
+			var afrom=document.getElementById("afrom");
+			var username=document.getElementById("aname");
+			var usertag = document.getElementById("user_icon");
+			var logout_tag = document.getElementById("login_menu1");
+			
+			if (afrom.value == "f" && username.value == "none"){
+				return;
+			}else{
+				logout_li="<a href=\""+"/command/signOut\""+">Log Out</a>";
+				logout_tag.innerHTML = logout_li;
+				usertag.innerHTML = username.value;
+			}
+		}
+	</script>
 </head>
 
-<body>
-    <input type="hidden" name="a" id="a" value="$static"> 
-    <input type="hidden" name="a" id="a" value="$name"> 
+<body onload="onloadFunction()">
+	<input type="hidden" name="afrom" id="afrom" value="$static"> 
+    <input type="hidden" name="aname" id="aname" value="$name"> 
     <section class="main-menu">
             <div class="container">
                 <div class="row">
@@ -56,18 +72,19 @@ $def with (static, name)
                                 <ul class="nav navbar-nav navbar-right">
 									<li><a href="/command/postQuestion">提問</a></li>
                                     <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">個人<span class="caret"></span></a>
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
+											<span id="user_icon">個人</span><span class="caret"></span>
+										</a>
                                         <ul class="dropdown-menu">
                                             <li><a href="/link/profile">設定</a></li>
                                             <li><a href="#">VAULT</a></li>
-                                            <li><a href="#">選項 3</a></li>
                                             <li role="separator" class="divider"></li>
                                             <li><a href="/link/favorite">收藏</a></li>
-                                            <li><a href="/command/signOut">登出</a></li>
+                                            
                                         </ul>
                                     </li>
-                                    <li><a href="/command/signIn">登入</a></li>
-                                    <li><a href="/command/signUp">註冊</a></li>
+                                    <li><span id="login_menu1"><a href="/command/signIn">Log In</a></span></li>
+                                    <li><span id="login_menu2"><a href="/command/signUp">註冊</a></span></li>
                                 </ul>
                             </div>
                         </div>

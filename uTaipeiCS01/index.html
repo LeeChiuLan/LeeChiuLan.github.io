@@ -5,7 +5,7 @@ $def with (static, name)
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
-    <title>skr Information</title>
+    <title>skr Information City</title>
     <link rel="stylesheet" href="/static/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <script src="/static/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -34,10 +34,9 @@ $def with (static, name)
 			if (afrom.value == "f" && username.value == "none"){
 				return;
 			}else{
-				logout_li="<a href=\""+"/command/signOut\""+">登出</a>";
+				logout_li="<a href=\""+"/command/signOut\""+">Log Out</a>";
 				logout_tag.innerHTML = logout_li;
 				usertag.innerHTML = username.value;
-				//document.getElementByName("login_menu2").style.display = 'none';
 			}
 		}
 	</script>
@@ -84,7 +83,7 @@ $def with (static, name)
                                             
                                         </ul>
                                     </li>
-                                    <li><span id="login_menu1"><a href="/command/signIn">登入</a></span></li>
+                                    <li><span id="login_menu1"><a href="/command/signIn">Log In</a></span></li>
                                     <li><span id="login_menu2"><a href="/command/signUp">註冊</a></span></li>
                                 </ul>
                             </div>
