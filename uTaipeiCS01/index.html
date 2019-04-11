@@ -29,15 +29,15 @@ $def with (static, name)
 			var afrom=document.getElementById("afrom");
 			var username=document.getElementById("aname");
 			var usertag = document.getElementById("user_icon");
+			var logout_tag = document.getElementById("login_menu1");
 			
 			if (afrom.value == "f" && username.value == "none"){
 				return;
 			}else{
-				usertag.innerHTML = username.value;
 				logout_li="<li><a href=\""+"/command/signOut\""+">登出</a></li>";
-			alert(text);
-				var logout_tag = document.getElementById("login_menu1");
+			alert(logout_li);
 				logout_tag.innerHTML = logout_li;
+				usertag.innerHTML = username.value;
 				$('#login_menu2').hide();
 			}
 		}
@@ -80,13 +80,12 @@ $def with (static, name)
                                         <ul class="dropdown-menu">
                                             <li><a href="/link/profile">設定</a></li>
                                             <li><a href="#">VAULT</a></li>
-                                            <li><a href="#">選項 3</a></li>
                                             <li role="separator" class="divider"></li>
                                             <li><a href="/link/favorite">收藏</a></li>
                                             
                                         </ul>
                                     </li>
-									<p id="login_menu1"></p>
+									<span id="login_menu1"></span>
 									<p id="login_menu2">
                                     <li><a href="/command/signIn">登入</a></li>
                                     <li><a href="/command/signUp">註冊</a></li>
