@@ -34,7 +34,7 @@ $def with (static, name)
 			if (afrom.value == "f" && username.value == "none"){
 				return;
 			}else{
-				logout_li="<li><a href=\""+"/command/signOut\""+">登出</a></li>";
+				logout_li="<li style=\"display: inline;clear: left\"><a href=\""+"/command/signOut\""+">登出</a></li>";
 				logout_tag.innerHTML = logout_li;
 				usertag.innerHTML = username.value;
 				//document.getElementByName("login_menu2").style.display = 'none';
