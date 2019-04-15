@@ -412,6 +412,12 @@ footer {
      display:none;
 }
 
+.divtitle {
+    text-align: left;
+    margin: 0 auto;
+    width: 50%;
+}
 .divtitle img {
-    width: 10%;
+    width: 80px;
+    height: 80px;
 }
