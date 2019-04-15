@@ -1,4 +1,4 @@
-$def with (static, name)
+$def with (static, name, title, content, c_static)
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,17 +39,31 @@ $def with (static, name)
 				usertag.innerHTML = username.value;
 			}
 		}
-		function test1(title, name){
+		function test1(title, name){		// 網頁載入時，會自動執行，title為問題標題 ，name為用戶名稱，他會傳title、name至server，然後server會將該提問的所有回答傳來，請接收後存進全域變數。
 			alert(title + " and " + name)  
 		}
+// 需要的URL：action="/link/question" ，method="post"
+// 傳送：{ title : <value>，name : <value> }
+// 接收：
+// 		[
+// 			{a_people : <value>, a_content : <value>，ElapsedTime : <value>，v_static : <value>},
+// 			...
+// 		]
+// 參數說明：
+// 		a_people		：回答人 
+// 		a_content		：回答內容
+// 		ElapsedTime		：回答已經過時間(秒)
+// 		v_static		：使用者是否有對該問題投票。1=有、0=沒有。
+	
 	</script>
 </head>
 
 <body onload="onloadFunction(); test1($title, $name)">
-	<input type="hidden" name="afrom" id="afrom" value="$static"> 
-    <input type="hidden" name="aname" id="aname" value="$name">
-    <input type="hidden" name="title" id="title" value="$title">
-    <input type="hidden" name="c_static" id="c_static" value="$c_static">
+	<input type="hidden" name="afrom" id="afrom" value="$static"> 			<!-- value值為登入狀態，s為登入，f為未登入 -->
+    <input type="hidden" name="aname" id="aname" value="$name">				<!-- 若登入，value為使用者名子，未登入則顯示none -->
+    <input type="hidden" name="title" id="title" value="$title">			<!-- value值為問題標題 -->
+	<input type="hidden" name="content" id="content" value="$content">		<!-- value值為問題內容 -->    
+    <input type="hidden" name="c_static" id="c_static" value="$c_static">	<!-- value值為是否有收藏，1為有，0為沒有 -->
     <section class="main-menu">
             <div class="container">
                 <div class="row">
@@ -119,11 +133,11 @@ $def with (static, name)
 										$title
 										</h3>
 										<p class="list-group-item-text title"><br>
-											<span>想請問大大，我4/6日要去墾丁工作，上網查了時間末班車到高雄的時間是晚上7點，請問有人知道在墾丁哪裡搭有晚上7點後到高雄的車子嗎～謝謝</span>
+											<span>$content</span>
 										</p>
 									</div>
 									<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-										<a class="btn btn-labeled btn-primary">
+										<a href="/link/favorite/add?name=$name&title=$title" class="btn btn-labeled btn-primary">	 <!-- 若未登入或是沒收藏，要在class裡加上disabled，讓使用者無法按 -->
 											<span class="btn-label"><i class="glyphicon glyphicon-star-empty"></i></span>Star
 										</a>
 									</div>
@@ -139,42 +153,28 @@ $def with (static, name)
 					<div class="row">
 						<div class="col-md-12">
 							<div class="list-group" align="left">
+
+								<!-- 從這裡開始為動態新增參考程式 -->
 								<div class="list-group-item">
 										<a href="#">
 											<img src="/static/images/person_ans.png" class="pull-left photo" alt="「奇隆」"/>
 										</a>
 										<div>
-											<span> 計程車，黃包車，甚麼時候也有</span>
+											<span> 計程車，黃包車，甚麼時候也有</span>		<!-- 內容的部分要動態調整，這裡要放該回答的內容 -->
 										</div>
 										<div>
 											<div style="font-size:70%"><br>
-												<a href="#" >「奇隆」</a><span >-</span>
-												<span class="localtime" data-ts="1553729357">1 星期前 </span>
+												<a href="#" >「奇隆」</a><span >-</span>	<!-- 內容的部分要動態調整，這裡要放該回答的人 -->
+												<span class="localtime" data-ts="1553729357">1 星期前 </span>	<!-- 內容的部分要動態調整，這裡要放該回答已經過時間，形式自訂 -->
 											</div>
 										</div>
 										<div align="right">
-											<a class="btn btn-labeled btn-success">
+											<a href="/like?name=$name&title=$title&a_people=XXX" class="btn btn-labeled btn-success">	<!-- 若未登入或是已投票，要在class裡加上disabled，讓使用者無法按 --> <!-- 在href中，a_people等於回答人，這部分需要動態調整-->
 												<span class="btn-label"><i class="glyphicon glyphicon-thumbs-up"></i></span>Like</a>
 										</div>
 								</div>
-								<div class="list-group-item">
-										<a href="#">
-											<img src="/static/images/person_ans.png" class="pull-left photo" alt="「奇隆」"/>
-										</a>
-										<div>
-											<span> 計程車，黃包車，甚麼時候也有</span>
-										</div>
-										<div>
-											<div style="font-size:70%"><br>
-												<a href="#" >「奇隆」</a><span >-</span>
-												<span class="localtime" data-ts="1553729357">1 星期前 </span>
-											</div>
-										</div>
-										<div align="right">
-											<a class="btn btn-labeled btn-success">
-												<span class="btn-label"><i class="glyphicon glyphicon-thumbs-up"></i></span>Like</a>
-										</div>
-								</div>
+								<!-- 參考結束 -->
+								
 								<div class="list-group-item">
 									<div class="add-answer-box">
 										<a href="#">
@@ -194,7 +194,7 @@ $def with (static, name)
 													</div>
 												</div>
 												<input type="hidden" name="username" id="username" value="$name">
-												<input type="hidden" name="title" id="title" value="墾丁到高雄班車發車時間?">
+												<input type="hidden" name="title" id="title" value="$title">
 											</form>
 										</div>
 									</div>

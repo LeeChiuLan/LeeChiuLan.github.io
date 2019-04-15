@@ -23,8 +23,6 @@ $def with (static, name)
                 }
             });
         });
-    </script>
-	<script>
 		function onloadFunction() {
 			var afrom=document.getElementById("afrom");
 			var username=document.getElementById("aname");
@@ -39,12 +37,34 @@ $def with (static, name)
 				usertag.innerHTML = username.value;
 			}
 		}
+		function test1(){			// 每次回到首頁時，會自動執行，他會把當下各分類前50個最新問題傳來，請接收後存進全域變數。
+			alert("I am test1()")
+		}
+		function test2(a){			// a為分類名稱，依據參數a動態更新右方畫面。
+			alert(a)       
+		}
+// 需要的URL：action="/" ，method="post"
+// 傳送：無
+// 接收：
+// 		[
+// 			{q_title : <value>, q_content : <value>，q_people : <value>，q_pro : <value>，sys_time_e : <value>，ElapsedTime : <value>},
+// 			...
+// 		]
+// 參數說明：
+// 		q_title			：問題標題
+// 		q_content		：問題內容
+// 		q_people		：發問人
+// 		q_pro			：分類
+// 		sys_time_e		：問題結束時間
+// 		ElapsedTime		：發問已經過時間(秒)
+
+
 	</script>
 </head>
 
-<body onload="onloadFunction()">
-	<input type="hidden" name="afrom" id="afrom" value="$static"> 
-    <input type="hidden" name="aname" id="aname" value="$name">
+<body onload="onloadFunction(); test1()">
+	<input type="hidden" name="afrom" id="afrom" value="$static"> 	<!-- value值為登入狀態，s為登入，f為未登入 -->
+    <input type="hidden" name="aname" id="aname" value="$name">		<!-- 若登入，value為使用者名子，未登入則顯示none -->
     <section class="main-menu">
             <div class="container">
                 <div class="row">
@@ -77,7 +97,7 @@ $def with (static, name)
 										</a>
                                         <ul class="dropdown-menu">
                                             <li><a href="/link/profile">設定</a></li>
-                                            <li><a href="#">VAULT</a></li>
+                                            <li><a href="/mithril">VAULT</a></li>
                                             <li role="separator" class="divider"></li>
                                             <li><a href="/link/favorite">收藏</a></li>
                                             
@@ -99,144 +119,61 @@ $def with (static, name)
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">                    
 					<div class="list-group">
 						<a class="list-group-item active"> Type </a>
-						<a href="#" class="list-group-item"> Education </a>
-						<a href="#" class="list-group-item"> Computer </a>
-						<a href="#" class="list-group-item"> Healthy </a>
-						<a href="#" class="list-group-item"> Science </a>
-						<a href="#" class="list-group-item"> Travel </a>
-						<a href="#" class="list-group-item"> Beauty </a>
-						<a href="#" class="list-group-item"> Sport </a>
-						<a href="#" class="list-group-item"> Music </a>
-						<a href="#" class="list-group-item"> Art </a>
-						<a href="#" class="list-group-item"> Game </a>
-						<a href="#" class="list-group-item"> Food </a>
-						<a href="#" class="list-group-item"> Law </a>
-						<a href="#" class="list-group-item"> Car </a>
-						<a href="#" class="list-group-item"> Pet </a>
+						<a href="" onclick="test2('Education')" class="list-group-item"> Education </a>
+						<a href="" onclick="test2('Computer')" class="list-group-item"> Computer </a>
+						<a href="" onclick="test2('Healthy')" class="list-group-item"> Healthy </a>
+						<a href="" onclick="test2('Science')" class="list-group-item"> Science </a>
+						<a href="" onclick="test2('Travel')" class="list-group-item"> Travel </a>
+						<a href="" onclick="test2('Beauty')" class="list-group-item"> Beauty </a>
+						<a href="" onclick="test2('Sport')" class="list-group-item"> Sport </a>
+						<a href="" onclick="test2('Music')" class="list-group-item"> Music </a>
+						<a href="" onclick="test2('Art')" class="list-group-item"> Art </a>
+						<a href="" onclick="test2('Game')" class="list-group-item"> Game </a>
+						<a href="" onclick="test2('Food')" class="list-group-item"> Food </a>
+						<a href="" onclick="test2('Law')" class="list-group-item"> Law </a>
+						<a href="" onclick="test2('Car')" class="list-group-item"> Car </a>
+						<a href="" onclick="test2('Pet')" class="list-group-item"> Pet </a>
 					</div>
 				</div>
                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
 					<div class="list-group" align="left">
+
+						<!-- 從這裡開始為動態新增參考程式 -->
 						<div class="list-group-item">
-							<a href="/link/question">
-								<h4 class="list-group-item-heading">墾丁到高雄班車發車時間?</h4>
+							<a href="/link/question?title=我從首頁來的&user=$name">				<!-- title的值要動態調整，這裡要放該問題的標題 -->
+								<h4 class="list-group-item-heading">墾丁到高雄班車發車時間?</h4>	<!-- 內容的部分要動態調整，這裡要放該問題的標題 -->
 							</a>
-							<p class="list-group-item-text">想請問大大，我4/6日要去墾丁工作，上網查了時間末班車到高雄的時間是晚上7點，請問有人知道在墾丁哪裡搭有晚上7點後到高雄的車子嗎～謝謝</p>
+							<p class="list-group-item-text">想請問大大，我4/6日要去墾丁工作，上網查了時間末班車到高雄的時間是晚上7點，請問有人知道在墾丁哪裡搭有晚上7點後到高雄的車子嗎～謝謝</p>	<!-- 內容的部分要動態調整，這裡要放該問題的內容 -->
 							<div>
-								<a href="#">Travel</a>
-								<span >-</span><span>1星期前</span>
+								<a href="#">Travel</a>				<!-- 內容的部分要動態調整，這裡要放該問題的分類 -->
+								<span >-</span><span>1星期前</span>	<!-- 依照該問題的ElapsedTime值計算多久前發布，形式自訂-->
 							</div>
 							<div class="add-answer-box">
-										<a href="#" onclick="toggle_visibility('add_answer1');">
-											<img src="/static/images/person_ans.png" class="pull-left photo" alt="Magicq"/>+
-											<p>to Answer</p>
-										</a>
-										<div class="add-answer-box" id="add_answer1" style="display:none;">
-											<form action="/event/answer" method="post">
-												<div>
-													<textarea placeholder="Add your answer" maxlength="500" rows="5" style="width:100%;"></textarea>
-												</div>
-												<div>
-													<div>
-														<br>
-														<button type="submit" class="btn btn-primary">Submit</button>
-														<button type="reset" class="btn btn-outline-secondary">Cancel</button>
-													</div>
-												</div>
-											</form>
+								<a href="#" onclick="toggle_visibility('add_answer1');">
+									<img src="/static/images/person_ans.png" class="pull-left photo" alt="Magicq"/>+
+									<p>to Answer</p>
+								</a>
+								<div class="add-answer-box" id="add_answer1" style="display:none;">
+									<form action="/event/answer" method="post">
+										<div>
+											<textarea name="content" id="content" placeholder="Add your answer" maxlength="500" rows="5" style="width:100%;"></textarea>
 										</div>
+										<div>
+											<div>
+												<br>
+												<button type="submit" class="btn btn-primary">Submit</button>
+												<button type="reset" class="btn btn-outline-secondary">Cancel</button>
+											</div>
+										</div>
+										<input type="hidden" name="username" id="username" value="$name">			<!-- 傳參數給server用，保險起見，這裡value的值用javascript去修改，值在<body>下方，為使用者名子 -->		
+										<input type="hidden" name="title" id="title" value="墾丁到高雄班車發車時間?">	<!-- value的值要動態調整，這裡要放該問題的標題 -->
+									</form>
+								</div>
 							</div>		
 						</div>
-						<div class="list-group-item">
-							<a href="#">
-								<h4 class="list-group-item-heading">橫突L3骨折相關問題?</h4>
-							</a>
-							<p class="list-group-item-text">想請問短夾橫突骨頭有什麼平時需要注意的部分呢？謝謝 希望大家骨頭能趕快癒合</p>
-							<div>
-								<a href="#">Healthy</a>
-								<span >-</span><span>33分鐘前</span>
-							</div>
-							<div class="add-answer-box">
-										<a href="#" onclick="toggle_visibility('add_answer2');">
-											<img src="/static/images/person_ans.png" class="pull-left photo" alt="Magicq"/>+
-											<p>to Answer</p>
-										</a>
-										<div class="add-answer-box" id="add_answer2" style="display:none;">
-											<form action="/event/answer" method="post">
-												<div>
-													<textarea placeholder="Add your answer" maxlength="500" rows="5" style="width:100%;"></textarea>
-												</div>
-												<div>
-													<div>
-														<br>
-														<button type="submit" class="btn btn-primary">Submit</button>
-														<button type="reset" class="btn btn-outline-secondary">Cancel</button>
-													</div>
-												</div>
-											</form>
-										</div>
-							</div>
-						</div>
-						<div class="list-group-item">
-							<a href="#">
-								<h4 class="list-group-item-heading">黑鯊2「遊」到<em>香港</em>啦</h4>
-							</a>
-							<p class="list-group-item-text">上月中時在中國大陸發表的黑鯊2 遊戲手機，現已正式在<em>香港</em>上架發售。.39 吋低頻 ...</p>
-							<div>
-								<a href="#">Game</a>
-								<span >-</span><span>7分鐘前</span>
-							</div>
-							<div class="add-answer-box">
-										<a href="#" onclick="toggle_visibility('add_answer3');">
-											<img src="/static/images/person_ans.png" class="pull-left photo" alt="Magicq"/>+
-											<p>to Answer</p>
-										</a>
-										<div class="add-answer-box" id="add_answer3" style="display:none;">
-											<form action="/event/answer" method="post">
-												<div>
-													<textarea placeholder="Add your answer" maxlength="500" rows="5" style="width:100%;"></textarea>
-												</div>
-												<div>
-													<div>
-														<br>
-														<button type="submit" class="btn btn-primary">Submit</button>
-														<button type="reset" class="btn btn-outline-secondary">Cancel</button>
-													</div>
-												</div>
-											</form>
-										</div>
-							</div>
-						</div>
-						<div class="list-group-item">
-							<a href="#">
-								<h3 class="list-group-item-heading">黑鯊2「遊」到<em>香港</em>啦</h4>
-							</a>
-							<p class="list-group-item-text">上月中時在中國大陸發表的黑鯊2 遊戲手機，現已正式在<em>香港</em>上架發售。.39 吋低頻 ...</p>
-							<div>
-								<a href="#">Game</a>
-								<span >-</span><span>7分鐘前</span>
-							</div>
-							<div class="add-answer-box">
-										<a href="#" onclick="toggle_visibility('add_answer4');">
-											<img src="/static/images/person_ans.png" class="pull-left photo" alt="Magicq"/>+
-											<p>to Answer</p>
-										</a>
-										<div class="add-answer-box" id="add_answer4" style="display:none;">
-											<form action="/event/answer" method="post">
-												<div>
-													<textarea placeholder="Add your answer" maxlength="500" rows="5" style="width:100%;"></textarea>
-												</div>
-												<div>
-													<div>
-														<br>
-														<button type="submit" class="btn btn-primary">Submit</button>
-														<button type="reset" class="btn btn-outline-secondary">Cancel</button>
-													</div>
-												</div>
-											</form>
-										</div>
-							</div>
-						</div>
+						<!-- 參考結束 -->
+
+
 					</div>
 				</div>
             </div>
