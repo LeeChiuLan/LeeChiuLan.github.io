@@ -13,7 +13,7 @@ $def with (static, username, email, password, callphone, homephone)
     <link rel="stylesheet" href="/static/css/style.css">
     <script src="/static/jquery/axjs0.js"></script>
 	<script type="text/javascript" src="/static/jquery/skrscripts.js"></script>
-    <script>
+    <script type="text/javascript">
         $$(document).ready(function() {  
             $$(window).bind('scroll', function() { 
                 if ($$(window).scrollTop() > 600) {
@@ -23,32 +23,68 @@ $def with (static, username, email, password, callphone, homephone)
                 }
             });
         });
-    </script>
-	<script>
 		function onloadFunction() {
 			var afrom=document.getElementById("afrom");
 			var username=document.getElementById("aname");
 			var usertag = document.getElementById("user_icon");
 			var logout_tag = document.getElementById("login_menu1");
+			var register_tag = document.getElementById("login_menu2");
 			
 			if (afrom.value == "f" && username.value == "none"){
 				return;
 			}else{
-				logout_li="<a href=\""+"/command/signOut\""+">Log Out</a>";
-				logout_tag.innerHTML = logout_li;
+				logout_tag.innerHTML = "Log Out";
+				logout_tag.href = "/command/signOut";
+				register_tag.innerHTML = "";
+				register_tag.href = "#";
 				usertag.innerHTML = username.value;
 			}
 		}
+        // <a class="btn btn-default" href="#" role="button">Link</a>
+        function test1(username, email){
+            var afrom=document.getElementById("afrom");
+            if (afrom.value == "f" && username.value == "none"){
+                document.getElementById("amount").innerHTML         = "None"
+                document.getElementById("staked_amount").innerHTML  = "None"
+                document.getElementById("updated_at").innerHTML     = "None"
+            }else{
+                $$.post(                    
+                    '/link/vault',
+                    {
+                        username: username,
+                        email: email
+                    },
+                    function(data){                       
+                        if (data['static']){
+                            document.getElementById("bb").innerHTML     
+                                = "<a class=\"btn btn-warning\" href=\"/event/delvault?username=$username&email=$email\" role=\"button\">Remove VAULT authorization</a>"
+                            document.getElementById("amount").innerHTML         = data['amount']
+                            document.getElementById("staked_amount").innerHTML  = data['staked_amount']
+                            document.getElementById("updated_at").innerHTML     = data['updated_at']
+                        }else{
+                            document.getElementById("bb").innerHTML     
+                                = "<a class=\"btn btn-info\" href=\"/event/addvault?username=$username&email=$email\" role=\"button\">Obtained VAULT authorization</a>"
+                            document.getElementById("amount").innerHTML         = "no data"
+                            document.getElementById("staked_amount").innerHTML  = "no data"
+                            document.getElementById("updated_at").innerHTML     = "no data"
+                            // document.getElementById("balance").innerHTML        = data['balance']
+                            // document.getElementById("kyc_level").innerHTML      = data['kyc_level']
+                            // document.getElementById("stake_level").innerHTML    = data['stake_level']
+                        }
+                    }
+                );
+            }
+        }
 	</script>
 </head>
 
-<body onload="onloadFunction()">
-	<input type="hidden" name="afrom" id="afrom" value="$static"> 
-    <input type="hidden" name="aname" id="aname" value="$username">
-    <input type="hidden" name="a" id="a" value="$email"> 
-    <input type="hidden" name="a" id="a" value="$password">   
-    <input type="hidden" name="a" id="a" value="$callphone"> 
-    <input type="hidden" name="a" id="a" value="$homephone"> 
+<body onload="onloadFunction(); test1('$username', '$email');">
+	<input type="hidden" name="afrom"     id="afrom"     value="$static"> 
+    <input type="hidden" name="aname"     id="aname"     value="$username">
+    <input type="hidden" name="email"     id="email"     value="$email"> 
+    <input type="hidden" name="password"  id="password"  value="$password">   
+    <input type="hidden" name="callphone" id="callphone" value="$callphone"> 
+    <input type="hidden" name="homephone" id="homephone" value="$homephone"> 
     <section class="main-menu">
             <div class="container">
                 <div class="row">
@@ -81,14 +117,14 @@ $def with (static, username, email, password, callphone, homephone)
 										</a>
                                         <ul class="dropdown-menu">
                                             <li><a href="/link/profile">設定</a></li>
-                                            <li><a href="#">VAULT</a></li>
+                                            <li><a href="/link/vault">VAULT</a></li>
                                             <li role="separator" class="divider"></li>
                                             <li><a href="/link/favorite">收藏</a></li>
                                             
                                         </ul>
                                     </li>
-                                    <li><span id="login_menu1"><a href="/command/signIn">Log In</a></span></li>
-                                    <li><span id="login_menu2"><a href="/command/signUp">註冊</a></span></li>
+                                    <li><a id="login_menu1" href="/command/signIn">Log In</a></li>
+                                    <li><a id="login_menu2" href="/command/signUp">註冊</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -110,8 +146,8 @@ $def with (static, username, email, password, callphone, homephone)
 								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
 									<span><img class="pull-left photo" src="/static/images/mith.png" style="max-width:60%;"/></span> 
 								</div>
-								<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-									<span>1201.234</span>&nbsp;&nbsp;MITH
+								<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" id="bb">
+									
 								</div>
 							</div>	
 						</div>
@@ -121,7 +157,7 @@ $def with (static, username, email, password, callphone, homephone)
 									<span>Amount</span>
 								</div>
 								<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-									<span>1200</span>&nbsp;&nbsp;MITH
+									<span id="amount"></span>&nbsp;&nbsp;
 								</div>
 							</div>	
 						</div>
@@ -131,17 +167,17 @@ $def with (static, username, email, password, callphone, homephone)
 									<span>Staked Amount</span>
 								</div>
 								<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-									<span>1.234</span>&nbsp;&nbsp;MITH
+									<span id="staked_amount"></span>&nbsp;&nbsp;
 								</div>
 							</div>	
 						</div>
 						<div class="list-group-item">
 							<div class="row">
 								<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-									<span>Updated</span>
+									<span>Updated</span>&nbsp;&nbsp;
 								</div>
 								<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-									<span>2019-01-31T07:06:26</span>
+									<span id="updated_at"></span>
 								</div>
 							</div>	
 						</div>
@@ -164,11 +200,15 @@ $def with (static, username, email, password, callphone, homephone)
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <ul>
                             <li>商業合作</li>
-                            <li>關於我們</li>
-                            <li>聯絡我們</li>
+                            <li><a href="/about">關於我們</a></li>
+                            <li><a href="mailto:a57345734@yahoo.com.tw">聯絡我們</li>
                         </ul>
                     </div>
-                    <img src="/static/images/facebook.png" /> <img src="/static/images/twitter.png" /> <img src="/static/images/youtube.png" /> </div>
+                    <div>
+                        <img src="/static/images/facebook.png" /> 
+                        <img src="/static/images/twitter.png" /> 
+                        <img src="/static/images/youtube.png" /> 
+                    </div>
                 </div>
             </div>
         </section>

@@ -30,14 +30,34 @@ $def with (static, name)
 			var username=document.getElementById("aname");
 			var usertag = document.getElementById("user_icon");
 			var logout_tag = document.getElementById("login_menu1");
+			var register_tag = document.getElementById("login_menu2");
 			
 			if (afrom.value == "f" && username.value == "none"){
 				return;
 			}else{
-				logout_li="<a href=\""+"/command/signOut\""+">Log Out</a>";
-				logout_tag.innerHTML = logout_li;
+				logout_tag.innerHTML = "Log Out";
+				logout_tag.href = "/command/signOut";
+				register_tag.innerHTML = "";
+				register_tag.href = "#";
 				usertag.innerHTML = username.value;
 			}
+		}
+		
+		function passwordCheck() {
+			var notOK=0;
+			if (document.getElementById('password').value !==
+				document.getElementById('inputPassword').value) {
+					alert(" The Password and the Confirm password does not match!");
+					notOK=1;
+				}
+			
+			return notOK;
+		}
+		
+		function validate(){
+			var notOK=passwordCheck();
+			if(notOK==1) return false;
+			else return true;
 		}
 	</script>
 </head>
@@ -77,14 +97,14 @@ $def with (static, name)
 										</a>
                                         <ul class="dropdown-menu">
                                             <li><a href="/link/profile">設定</a></li>
-                                            <li><a href="#">VAULT</a></li>
+                                            <li><a href="/link/vault">VAULT</a></li>
                                             <li role="separator" class="divider"></li>
                                             <li><a href="/link/favorite">收藏</a></li>
                                             
                                         </ul>
                                     </li>
-                                    <li><span id="login_menu1"><a href="/command/signIn">Log In</a></span></li>
-                                    <li><span id="login_menu2"><a href="/command/signUp">註冊</a></span></li>
+                                    <li><a id="login_menu1" href="/command/signIn">Log In</a></li>
+                                    <li><a id="login_menu2" href="/command/signUp">註冊</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -97,7 +117,7 @@ $def with (static, name)
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<form action="/command/signUp" method="post">
+					<form action="/command/signUp" method="post" onSubmit = "return validate();">
 						<h1>Sign Up</h1>
 						<div class="form-group">
 							<label for="inputUsername">Username</label>
@@ -117,8 +137,7 @@ $def with (static, name)
 						</div>
 						<button type="submit" class="btn btn-primary btn-block">Sign Up</button>
 					</form>
-					<br>
-					<button onclick="notYet()">Log in with VAULT</button>
+					
                 </div>
             </div>
         </div>
@@ -137,8 +156,8 @@ $def with (static, name)
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <ul>
                             <li>商業合作</li>
-                            <li>關於我們</li>
-                            <li>聯絡我們</li>
+                            <li><a href="/about">關於我們</a></li>
+                            <li><a href="mailto:a57345734@yahoo.com.tw">聯絡我們</li>
                         </ul>
                     </div>
                     <img src="/static/images/facebook.png" /> <img src="/static/images/twitter.png" /> <img src="/static/images/youtube.png" /> </div>

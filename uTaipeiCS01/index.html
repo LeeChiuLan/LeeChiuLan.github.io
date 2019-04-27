@@ -14,8 +14,8 @@ $def with (static, name)
     <script src="/static/jquery/axjs0.js"></script>
 	<script type="text/javascript" src="/static/jquery/skrscripts.js"></script>
     <script>
-        $$(document).ready(function() {  
-            $$(window).bind('scroll', function() { 
+        $$(document).ready(function() {
+            $$(window).bind('scroll', function() {
                 if ($$(window).scrollTop() > 600) {
                     $('nav').addClass('fixed');
                 } else {
@@ -28,20 +28,125 @@ $def with (static, name)
 			var username=document.getElementById("aname");
 			var usertag = document.getElementById("user_icon");
 			var logout_tag = document.getElementById("login_menu1");
+			var register_tag = document.getElementById("login_menu2");
 			
 			if (afrom.value == "f" && username.value == "none"){
 				return;
 			}else{
-				logout_li="<a href=\""+"/command/signOut\""+">Log Out</a>";
-				logout_tag.innerHTML = logout_li;
+				logout_tag.innerHTML = "Log Out";
+				logout_tag.href = "/command/signOut";
+				register_tag.innerHTML = "";
+				register_tag.href = "#";
 				usertag.innerHTML = username.value;
 			}
 		}
+		var alldata;
 		function test1(){			// 每次回到首頁時，會自動執行，他會把當下各分類前50個最新問題傳來，請接收後存進全域變數。
-			alert("I am test1()")
+			var ElapsedTime;
+			var ElapsedTimestr;
+			$$.post(
+			'/',
+			function(data){
+				alldata = data;
+				for(i = 0; i<= data.length ;i++){
+
+					var ElapsedTime = data[i]['ElapsedTime'];
+					var ElapsedTimestr = " ";
+					// alert(parseInt(ElapsedTime/60*60*24*7))
+					if (parseInt(ElapsedTime/60) == 0){
+						ElapsedTimestr += ElapsedTime + "秒鐘前"
+
+					}else if (parseInt(ElapsedTime/60/60) == 0){
+						ElapsedTimestr += parseInt(ElapsedTime/60) + "分鐘前"
+
+					}else if (parseInt(ElapsedTime/60/60/24) == 0){
+						ElapsedTimestr += parseInt(ElapsedTime/60/60) + "小時前"
+
+					}else if (parseInt(ElapsedTime/60/60/24/7) == 0){
+						ElapsedTimestr += parseInt(ElapsedTime/60/60/24) + "天前"
+
+					}else if (parseInt(ElapsedTime/60/60/24/7/4) == 0){
+						ElapsedTimestr += parseInt(ElapsedTime/60/60/24/7) + "星期前"
+
+					}else if (parseInt(ElapsedTime/60/60/24/7/4/12) == 0){
+						ElapsedTimestr += parseInt(ElapsedTime/60/60/24/7/4) + "月前"
+
+					}else{
+						ElapsedTimestr += ElapsedTime
+					}
+
+					$$("#listq").append(
+						"<div class=\"list-group-item\">"
+							+ "<a href=\"/link/question?title=" + data[i]["q_title"] + "&user=$name\">"
+								+"<h4 class=\"list-group-item-heading\">" + data[i]["q_title"] + "</h4>"
+							+"</a>"
+							+"<p class=\"list-group-item-text\">" + data[i]["q_content"] + "</p>"
+							+"<div>"
+								+"<a href=\"#\" onclick=\"test2('" + data[i]["q_pro"] + "')\">" + data[i]["q_pro"] + "</a>"	
+								+"<span >-</span><span>" + ElapsedTimestr + "</span>"	
+							+"</div>"
+						
+						+"</div>"				
+					
+					
+					);
+					
+					
+				}
+			}
+			);
 		}
 		function test2(a){			// a為分類名稱，依據參數a動態更新右方畫面。
-			alert(a)       
+			$$("#listq").html("");
+			// alert(a);
+			for(i = 0; i<= alldata.length ;i++){
+				
+				if(alldata[i]["q_pro"] == a){
+					var ElapsedTime = alldata[i]['ElapsedTime'];
+					var ElapsedTimestr = " ";
+					// alert(parseInt(ElapsedTime/60*60*24*7))
+					if (parseInt(ElapsedTime/60) == 0){
+						ElapsedTimestr += ElapsedTime + "秒鐘前"
+
+					}else if (parseInt(ElapsedTime/60/60) == 0){
+						ElapsedTimestr += parseInt(ElapsedTime/60) + "分鐘前"
+
+					}else if (parseInt(ElapsedTime/60/60/24) == 0){
+						ElapsedTimestr += parseInt(ElapsedTime/60/60) + "小時前"
+
+					}else if (parseInt(ElapsedTime/60/60/24/7) == 0){
+						ElapsedTimestr += parseInt(ElapsedTime/60/60/24) + "天前"
+
+					}else if (parseInt(ElapsedTime/60/60/24/7/4) == 0){
+						ElapsedTimestr += parseInt(ElapsedTime/60/60/24/7) + "星期前"
+
+					}else if (parseInt(ElapsedTime/60/60/24/7/4/12) == 0){
+						ElapsedTimestr += parseInt(ElapsedTime/60/60/24/7/4) + "月前"
+
+					}else{
+						ElapsedTimestr += ElapsedTime
+					}					
+					$$("#listq").append(
+						"<div class=\"list-group-item\">"
+							+ "<a href=\"/link/question?title=" + alldata[i]["q_title"] + "&user=$name\">"
+								+"<h4 class=\"list-group-item-heading\">" + alldata[i]["q_title"] + "</h4>"
+							+"</a>"
+							+"<p class=\"list-group-item-text\">" + alldata[i]["q_content"] + "</p>"
+							+"<div>"
+								+"<a href=\"#\" onclick=\"test2('" + alldata[i]["q_pro"] + "')\">" + alldata[i]["q_pro"] + "</a>"
+								+"<span >-</span><span>" + ElapsedTimestr + "</span>"	
+							+"</div>"
+		
+						+"</div>"				
+					
+					
+					);
+				}
+					
+			}
+			
+			//加入SQL的部分
+			
 		}
 // 需要的URL：action="/" ，method="post"
 // 傳送：無
@@ -62,7 +167,8 @@ $def with (static, name)
 	</script>
 </head>
 
-<body onload="onloadFunction(); test1()">
+<body onload="onloadFunction(); test1();">
+	
 	<input type="hidden" name="afrom" id="afrom" value="$static"> 	<!-- value值為登入狀態，s為登入，f為未登入 -->
     <input type="hidden" name="aname" id="aname" value="$name">		<!-- 若登入，value為使用者名子，未登入則顯示none -->
     <section class="main-menu">
@@ -97,14 +203,14 @@ $def with (static, name)
 										</a>
                                         <ul class="dropdown-menu">
                                             <li><a href="/link/profile">設定</a></li>
-                                            <li><a href="/mithril">VAULT</a></li>
+                                            <li><a href="/link/vault">VAULT</a></li>
                                             <li role="separator" class="divider"></li>
                                             <li><a href="/link/favorite">收藏</a></li>
                                             
                                         </ul>
                                     </li>
-                                    <li><span id="login_menu1"><a href="/command/signIn">Log In</a></span></li>
-                                    <li><span id="login_menu2"><a href="/command/signUp">註冊</a></span></li>
+                                    <li><a id="login_menu1" href="/command/signIn">Log In</a></li>
+                                    <li><a id="login_menu2" href="/command/signUp">註冊</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -119,34 +225,35 @@ $def with (static, name)
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">                    
 					<div class="list-group">
 						<a class="list-group-item active"> Type </a>
-						<a href="" onclick="test2('Education')" class="list-group-item"> Education </a>
-						<a href="" onclick="test2('Computer')" class="list-group-item"> Computer </a>
-						<a href="" onclick="test2('Healthy')" class="list-group-item"> Healthy </a>
-						<a href="" onclick="test2('Science')" class="list-group-item"> Science </a>
-						<a href="" onclick="test2('Travel')" class="list-group-item"> Travel </a>
-						<a href="" onclick="test2('Beauty')" class="list-group-item"> Beauty </a>
-						<a href="" onclick="test2('Sport')" class="list-group-item"> Sport </a>
-						<a href="" onclick="test2('Music')" class="list-group-item"> Music </a>
-						<a href="" onclick="test2('Art')" class="list-group-item"> Art </a>
-						<a href="" onclick="test2('Game')" class="list-group-item"> Game </a>
-						<a href="" onclick="test2('Food')" class="list-group-item"> Food </a>
-						<a href="" onclick="test2('Law')" class="list-group-item"> Law </a>
-						<a href="" onclick="test2('Car')" class="list-group-item"> Car </a>
-						<a href="" onclick="test2('Pet')" class="list-group-item"> Pet </a>
+						<a href="#" onclick="test2('Blockchain')" class="list-group-item"> Blockchain </a>
+						<a href="#" onclick="test2('Education')" class="list-group-item"> Education </a>
+						<a href="#" onclick="test2('Computer')" class="list-group-item"> Computer </a>
+						<a href="#" onclick="test2('Healthy')" class="list-group-item"> Healthy </a>
+						<a href="#" onclick="test2('Science')" class="list-group-item"> Science </a>
+						<a href="#" onclick="test2('Travel')" class="list-group-item"> Travel </a>
+						<a href="#" onclick="test2('Beauty')" class="list-group-item"> Beauty </a>
+						<a href="#" onclick="test2('Sport')" class="list-group-item"> Sport </a>
+						<a href="#" onclick="test2('Music')" class="list-group-item"> Music </a>
+						<a href="#" onclick="test2('Art')" class="list-group-item"> Art </a>
+						<a href="#" onclick="test2('Game')" class="list-group-item"> Game </a>
+						<a href="#" onclick="test2('Food')" class="list-group-item"> Food </a>
+						<a href="#" onclick="test2('Law')" class="list-group-item"> Law </a>
+						<a href="#" onclick="test2('Car')" class="list-group-item"> Car </a>
+						<a href="#" onclick="test2('Pet')" class="list-group-item"> Pet </a>
 					</div>
 				</div>
                 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-					<div class="list-group" align="left">
+					<div id ="listq" class="list-group" align="left">
 
 						<!-- 從這裡開始為動態新增參考程式 -->
-						<div class="list-group-item">
-							<a href="/link/question?title=我從首頁來的&user=$name">				<!-- title的值要動態調整，這裡要放該問題的標題 -->
-								<h4 class="list-group-item-heading">墾丁到高雄班車發車時間?</h4>	<!-- 內容的部分要動態調整，這裡要放該問題的標題 -->
+<!-- 						<div class="list-group-item">
+							<a href="/link/question?title=我從首頁來的&user=$name">				
+								<h4 class="list-group-item-heading">墾丁到高雄班車發車時間?</h4>	
 							</a>
-							<p class="list-group-item-text">想請問大大，我4/6日要去墾丁工作，上網查了時間末班車到高雄的時間是晚上7點，請問有人知道在墾丁哪裡搭有晚上7點後到高雄的車子嗎～謝謝</p>	<!-- 內容的部分要動態調整，這裡要放該問題的內容 -->
+							<p class="list-group-item-text">想請問大大，我4/6日要去墾丁工作，上網查了時間末班車到高雄的時間是晚上7點，請問有人知道在墾丁哪裡搭有晚上7點後到高雄的車子嗎～謝謝</p>	
 							<div>
-								<a href="#">Travel</a>				<!-- 內容的部分要動態調整，這裡要放該問題的分類 -->
-								<span >-</span><span>1星期前</span>	<!-- 依照該問題的ElapsedTime值計算多久前發布，形式自訂-->
+								<a href="#">Travel</a>				
+								<span >-</span><span>1星期前</span>	
 							</div>
 							<div class="add-answer-box">
 								<a href="#" onclick="toggle_visibility('add_answer1');">
@@ -165,12 +272,12 @@ $def with (static, name)
 												<button type="reset" class="btn btn-outline-secondary">Cancel</button>
 											</div>
 										</div>
-										<input type="hidden" name="username" id="username" value="$name">			<!-- 傳參數給server用，保險起見，這裡value的值用javascript去修改，值在<body>下方，為使用者名子 -->		
-										<input type="hidden" name="title" id="title" value="墾丁到高雄班車發車時間?">	<!-- value的值要動態調整，這裡要放該問題的標題 -->
+										<input type="hidden" name="username" id="username" value="$name">			
+										<input type="hidden" name="title" id="title" value="墾丁到高雄班車發車時間?">	
 									</form>
 								</div>
 							</div>		
-						</div>
+						</div> -->
 						<!-- 參考結束 -->
 
 
@@ -193,8 +300,8 @@ $def with (static, name)
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <ul>
                             <li>商業合作</li>
-                            <li>關於我們</li>
-                            <li>聯絡我們</li>
+                            <li><a href="/about">關於我們</a></li>
+                            <li><a href="mailto:a57345734@yahoo.com.tw">聯絡我們</li>
                         </ul>
                     </div>
                     <img src="/static/images/facebook.png" /> <img src="/static/images/twitter.png" /> <img src="/static/images/youtube.png" /> </div>

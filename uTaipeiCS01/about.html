@@ -1,4 +1,4 @@
-$def with (static, name)
+$def with (static, username)
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,8 +14,8 @@ $def with (static, name)
     <script src="/static/jquery/axjs0.js"></script>
 	<script type="text/javascript" src="/static/jquery/skrscripts.js"></script>
     <script>
-        $$(document).ready(function() {
-            $$(window).bind('scroll', function() {
+        $$(document).ready(function() {  
+            $$(window).bind('scroll', function() { 
                 if ($$(window).scrollTop() > 600) {
                     $('nav').addClass('fixed');
                 } else {
@@ -23,196 +23,33 @@ $def with (static, name)
                 }
             });
         });
+    </script>
+	<script>
 		function onloadFunction() {
 			var afrom=document.getElementById("afrom");
 			var username=document.getElementById("aname");
 			var usertag = document.getElementById("user_icon");
 			var logout_tag = document.getElementById("login_menu1");
+			var register_tag = document.getElementById("login_menu2");
 			
 			if (afrom.value == "f" && username.value == "none"){
 				return;
 			}else{
 				logout_tag.innerHTML = "Log Out";
-				logout_tag.href = "/command/signOut"
+				logout_tag.href = "/command/signOut";
+				register_tag.innerHTML = "";
+				register_tag.href = "#";
 				usertag.innerHTML = username.value;
 			}
 		}
-		var alldata;
-		function test1(){			// 每次回到首頁時，會自動執行，他會把當下各分類前50個最新問題傳來，請接收後存進全域變數。
-			var ElapsedTime;
-			var ElapsedTimestr;
-			$$.post(
-			'/',
-			function(data){
-				alldata = data;
-				for(i = 0; i<= data.length ;i++){
-
-					var ElapsedTime = data[i]['ElapsedTime'];
-					var ElapsedTimestr = " ";
-					// alert(parseInt(ElapsedTime/60*60*24*7))
-					if (parseInt(ElapsedTime/60) == 0){
-						ElapsedTimestr += ElapsedTime + "秒鐘前"
-
-					}else if (parseInt(ElapsedTime/3600) == 0){
-						ElapsedTimestr += parseInt(ElapsedTime/60) + "分鐘前"
-
-					}else if (parseInt(ElapsedTime/8640) == 0){
-						ElapsedTimestr += parseInt(ElapsedTime/3600) + "小時前"
-
-					}else if (parseInt(ElapsedTime/604800) == 0){
-						ElapsedTimestr += parseInt(ElapsedTime/8640) + "天前"
-
-					}else if (parseInt(ElapsedTime/1814400) == 0){
-						ElapsedTimestr += parseInt(ElapsedTime/604800) + "星期前"
-
-					}else if (parseInt(ElapsedTime/217728000) == 0){
-						ElapsedTimestr += parseInt(ElapsedTime/1814400) + "月前"
-
-					}else{
-						ElapsedTimestr += ElapsedTime
-					}
-
-
-					$$("#listq").append(
-						"<div class=\"list-group-item\">"
-							+ "<a href=\"/link/question?title=" + data[i]["q_title"] + "&user=$name\">"
-								+"<h4 class=\"list-group-item-heading\">" + data[i]["q_title"] + "</h4>"
-							+"</a>"
-							+"<p class=\"list-group-item-text\">" + data[i]["q_content"] + "</p>"
-							+"<div>"
-								+"<a href=\"#\" onclick=\"test2('" + data[i]["q_pro"] + "')\">" + data[i]["q_pro"] + "</a>"	
-								+"<span >-</span><span>" + ElapsedTimestr + "</span>"	
-							+"</div>"
-							+"<div class=\"add-answer-box\">"
-								+"<a href=\"#!\" onclick=\"toggle_visibility('add_answer" + i + "');\">"
-									+"<img src=\"/static/images/person_ans.png\" class=\"pull-left photo\" alt=\"Magicq\"/>+"
-									+"<p>to Answer</p>"
-								+"</a>"
-								+"<div class=\"add-answer-box\" id=\"add_answer" + i + "\" style=\"display:none;\">"
-									+"<form action=\"/event/answer\" method=\"post\">"
-										+"<div>"
-											+"<textarea name=\"content\" id=\"content\" placeholder=\"Add your answer\" maxlength=\"500\" rows=\"5\" style=\"width:100%;\"></textarea>"
-										+"</div>"
-										+"<div>"
-											+"<div>"
-												+"<br>"
-												+"<button type=\"submit\" class=\"btn btn-primary\">Submit</button>"
-												+"<button type=\"reset\" class=\"btn btn-outline-secondary\">Cancel</button>"
-											+"</div>"
-										+"</div>"
-										+"<input type=\"hidden\" name=\"username\" id=\"username\" value=\"$name\">"
-										+"<input type=\"hidden\" name=\"title\" id=\"title\" value=\"" + data[i]["q_title"] + "\">"
-									+"</form>"
-								+"</div>"
-							+"</div>"		
-						+"</div>"				
-					
-					
-					);
-					
-					
-				}
-			}
-			);
-		}
-		function test2(a){			// a為分類名稱，依據參數a動態更新右方畫面。
-			$$("#listq").html("");
-			// alert(a);
-			for(i = 0; i<= alldata.length ;i++){
-				
-				if(alldata[i]["q_pro"] == a){
-					var ElapsedTime = alldata[i]['ElapsedTime'];
-					var ElapsedTimestr = " ";
-					// alert(parseInt(ElapsedTime/60*60*24*7))
-					if (parseInt(ElapsedTime/60) == 0){
-						ElapsedTimestr += ElapsedTime + "秒鐘前"
-
-					}else if (parseInt(ElapsedTime/3600) == 0){
-						ElapsedTimestr += parseInt(ElapsedTime/60) + "分鐘前"
-
-					}else if (parseInt(ElapsedTime/8640) == 0){
-						ElapsedTimestr += parseInt(ElapsedTime/3600) + "小時前"
-
-					}else if (parseInt(ElapsedTime/604800) == 0){
-						ElapsedTimestr += parseInt(ElapsedTime/8640) + "天前"
-
-					}else if (parseInt(ElapsedTime/1814400) == 0){
-						ElapsedTimestr += parseInt(ElapsedTime/604800) + "星期前"
-
-					}else if (parseInt(ElapsedTime/217728000) == 0){
-						ElapsedTimestr += parseInt(ElapsedTime/1814400) + "月前"
-
-					}else{
-						ElapsedTimestr += ElapsedTime
-					}					
-					$$("#listq").append(
-						"<div class=\"list-group-item\">"
-							+ "<a href=\"/link/question?title=" + alldata[i]["q_title"] + "&user=$name\">"
-								+"<h4 class=\"list-group-item-heading\">" + alldata[i]["q_title"] + "</h4>"
-							+"</a>"
-							+"<p class=\"list-group-item-text\">" + alldata[i]["q_content"] + "</p>"
-							+"<div>"
-								+"<a href=\"#\" onclick=\"test2('" + alldata[i]["q_pro"] + "')\">" + alldata[i]["q_pro"] + "</a>"
-								+"<span >-</span><span>" + ElapsedTimestr + "</span>"	
-							+"</div>"
-							+"<div class=\"add-answer-box\">"
-								+"<a href=\"javascript:void(0);\" class=\"someclass\" onclick=\"toggle_visibility('add_answer" + i + "');\">"
-									+"<img src=\"/static/images/person_ans.png\" class=\"pull-left photo\" alt=\"Magicq\"/>+"
-									+"<p>to Answer</p>"
-								+"</a>"
-								+"<div class=\"add-answer-box\" id=\"add_answer" + i + "\" style=\"display:none;\">"
-									+"<form action=\"/event/answer\" method=\"post\">"
-										+"<div>"
-											+"<textarea name=\"content\" id=\"content\" placeholder=\"Add your answer\" maxlength=\"500\" rows=\"5\" style=\"width:100%;\"></textarea>"
-										+"</div>"
-										+"<div>"
-											+"<div>"
-												+"<br>"
-												+"<button type=\"submit\" class=\"btn btn-primary\">Submit</button>"
-												+"<button type=\"reset\" class=\"btn btn-outline-secondary\">Cancel</button>"
-											+"</div>"
-										+"</div>"
-										+"<input type=\"hidden\" name=\"username\" id=\"username\" value=\"$name\">"
-										+"<input type=\"hidden\" name=\"title\" id=\"title\" value=\"" + alldata[i]["q_title"] + "\">"
-									+"</form>"
-								+"</div>"
-							+"</div>"		
-						+"</div>"				
-					
-					
-					);
-				}
-					
-			}
-			
-			//加入SQL的部分
-			
-		}
-// 需要的URL：action="/" ，method="post"
-// 傳送：無
-// 接收：
-// 		[
-// 			{q_title : <value>, q_content : <value>，q_people : <value>，q_pro : <value>，sys_time_e : <value>，ElapsedTime : <value>},
-// 			...
-// 		]
-// 參數說明：
-// 		q_title			：問題標題
-// 		q_content		：問題內容
-// 		q_people		：發問人
-// 		q_pro			：分類
-// 		sys_time_e		：問題結束時間
-// 		ElapsedTime		：發問已經過時間(秒)
-
-
 	</script>
 </head>
 
-<body onload="onloadFunction(); test1();">
-	
-	<input type="hidden" name="afrom" id="afrom" value="$static"> 	<!-- value值為登入狀態，s為登入，f為未登入 -->
-    <input type="hidden" name="aname" id="aname" value="$name">		<!-- 若登入，value為使用者名子，未登入則顯示none -->
-    <section class="main-menu">
-            <div class="container">
+<body onload="onloadFunction()">
+	<input type="hidden" name="afrom" id="afrom" value="$static"> 
+    <input type="hidden" name="aname" id="aname" value="$username">
+    <section>
+        <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="navbar-header">
@@ -264,50 +101,6 @@ $def with (static, name)
             <div class="row">
 					<div id ="listq" class="list-group" align="left">
 
-						<!-- 從這裡開始為動態新增參考程式 -->
-<!-- 						<div class="list-group-item">
-							<a href="/link/question?title=我從首頁來的&user=$name">				
-								<h4 class="list-group-item-heading">墾丁到高雄班車發車時間?</h4>	
-							</a>
-							<p class="list-group-item-text">想請問大大，我4/6日要去墾丁工作，上網查了時間末班車到高雄的時間是晚上7點，請問有人知道在墾丁哪裡搭有晚上7點後到高雄的車子嗎～謝謝</p>	
-							<div>
-								<a href="#">Travel</a>				
-								<span >-</span><span>1星期前</span>	
-							</div>
-							<div class="add-answer-box">
-								<a href="#" onclick="toggle_visibility('add_answer1');">
-									<img src="/static/images/person_ans.png" class="pull-left photo" alt="Magicq"/>+
-									<p>to Answer</p>
-								</a>
-								<div class="add-answer-box" id="add_answer1" style="display:none;">
-									<form action="/event/answer" method="post">
-										<div>
-											<textarea name="content" id="content" placeholder="Add your answer" maxlength="500" rows="5" style="width:100%;"></textarea>
-										</div>
-										<div>
-											<div>
-												<br>
-												<button type="submit" class="btn btn-primary">Submit</button>
-												<button type="reset" class="btn btn-outline-secondary">Cancel</button>
-											</div>
-										</div>
-										<input type="hidden" name="username" id="username" value="$name">			
-										<input type="hidden" name="title" id="title" value="墾丁到高雄班車發車時間?">	
-									</form>
-								</div>
-							</div>		
-						</div> -->
-						<!-- 參考結束 -->
-
-						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-							<div class="thumbnail">
-								<div class="caption">
-									<h3><span class="glyphicon glyphicon-link"></span>蘇鴻章</h3>
-									<p>臺北市立大學 資訊科學系 學生</p>
-									<p>目前正在研究有關區塊鏈相關應用。</p>
-								</div>
-							</div>
-						</div>
 						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 							<div class="thumbnail">
 								<div class="caption">
@@ -323,6 +116,15 @@ $def with (static, name)
 									<a href="http://www.airitilibrary.com/Publication/alDetailedMesh?DocID=a0000030-201812-201901100002-201901100002-1-8&amp;fbclid=IwAR0YqGfLKFoqMHZl1CqZT7CJeuN6zVxhKzeAvRNXxxq5AT1ms5NL8ljipNE" target="_blank">
 										Technology Trends You Need to Know - Blockchain
 									</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+							<div class="thumbnail">
+								<div class="caption">
+									<h3><span class="glyphicon glyphicon-link"></span>蘇鴻章</h3>
+									<p>臺北市立大學 資訊科學系 學生</p>
+									<p>目前正在研究有關區塊鏈相關應用。</p>
 								</div>
 							</div>
 						</div>
@@ -360,8 +162,8 @@ $def with (static, name)
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <ul>
                             <li>商業合作</li>
-                            <li>關於我們</li>
-                            <li>聯絡我們</li>
+                            <li><a href="/about">關於我們</a></li>
+                            <li><a href="mailto:a57345734@yahoo.com.tw">聯絡我們</li>
                         </ul>
                     </div>
                     <img src="/static/images/facebook.png" /> <img src="/static/images/twitter.png" /> <img src="/static/images/youtube.png" /> </div>

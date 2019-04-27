@@ -45,21 +45,83 @@ $def with (static, name)
 			var username=document.getElementById("aname");
 			var usertag = document.getElementById("user_icon");
 			var logout_tag = document.getElementById("login_menu1");
+			var register_tag = document.getElementById("login_menu2");
 			
 			if (afrom.value == "f" && username.value == "none"){
 				return;
 			}else{
-				logout_li="<a href=\""+"/command/signOut\""+">Log Out</a>";
-				logout_tag.innerHTML = logout_li;
+				logout_tag.innerHTML = "Log Out";
+				logout_tag.href = "/command/signOut";
+				register_tag.innerHTML = "";
+				register_tag.href = "#";
 				usertag.innerHTML = username.value;
 			}
 		}
 
-       function test1(a){       // a為用戶名稱 ，他會傳送用戶名稱給server，然後收到該用戶的收藏問題list。
-            alert(a)          
+       function test1(name){       // a為用戶名稱 ，他會傳送用戶名稱給server，然後收到該用戶的收藏問題list。
+        //alert(name);
+           $$.post('/link/favorite',{
+            name:name
+
+           },
+            function(data){
+                //alert(data);
+                for(i= 0 ;i<=data.length;i++){
+
+
+                    var ElapsedTime = data[i]['ElapsedTime'];
+                    var ElapsedTimestr = " ";
+                    // alert(parseInt(ElapsedTime/60*60*24*7))
+                    if (parseInt(ElapsedTime/60) == 0){
+                        ElapsedTimestr += ElapsedTime + "秒鐘前"
+
+                    }else if (parseInt(ElapsedTime/60/60) == 0){
+                        ElapsedTimestr += parseInt(ElapsedTime/60) + "分鐘前"
+
+                    }else if (parseInt(ElapsedTime/60/60/24) == 0){
+                        ElapsedTimestr += parseInt(ElapsedTime/60/60) + "小時前"
+
+                    }else if (parseInt(ElapsedTime/60/60/24/7) == 0){
+                        ElapsedTimestr += parseInt(ElapsedTime/60/60/24) + "天前"
+
+                    }else if (parseInt(ElapsedTime/60/60/24/7/4) == 0){
+                        ElapsedTimestr += parseInt(ElapsedTime/60/60/24/7) + "星期前"
+
+                    }else if (parseInt(ElapsedTime/60/60/24/7/4/12) == 0){
+                        ElapsedTimestr += parseInt(ElapsedTime/60/60/24/7/4) + "月前"
+
+                    }else{
+                        ElapsedTimestr += ElapsedTime
+                    }
+
+
+                    $$('#listf').append(
+                        "<div class=\"list-group-item\">"
+                            +"<div class=\"row\">"
+                                +"<div class=\"col-lg-11 col-md-11 col-sm-11 col-xs-11\">"
+                                    +"<a href=\"/link/question?title=" + data[i]["q_title"] + "&user=$name\">"
+                                        +"<h4 class=\"list-group-item-heading\">"+ data[i]['q_title'] +"</h4>"
+                                    +"</a>"
+                                    +"<p class=\"list-group-item-text\">"+ data[i]['q_content']+"</p>"
+                                    +"<div>"
+                                        +"<a href=\"#\">"+ data[i]['q_pro']+"</a>"
+                                        +"<span >-</span><span>" + ElapsedTimestr + "</span>&nbsp;&nbsp;<span><img src=\"/static/images/mith.png\" style=\"width:16px;height:16px;border:0;\"> " + data[i]["q_mithril"] + " MITH</span>"
+                                    +"</div>"
+                                +"</div>"
+                                +"<div class=\"col-lg-1 col-md-1 col-sm-1 col-xs-1\">"
+                                    +"<a href=\"/link/favorite/del?title=\'" + data[i]['q_title'] + "\'&name=\'$name\'\">" 
+                                        +"<img src=\"/static/images/trash.png\" style=\"max-width:100%;\"/>Remove"
+                                    +"</a>"
+                                +"</div>"
+                            +"</div>"
+                        +"</div>"
+
+                        );
+                }
+           });     
        } 
 // 需要的URL：action="/link/favorite" ，method="post"
-// 傳送：無
+// 傳送：name
 // 接收：
 //      [
 //          {q_title : <value>, q_content : <value>，q_people : <value>，q_pro : <value>，sys_time_e : <value>，ElapsedTime : <value>},
@@ -76,7 +138,7 @@ $def with (static, name)
     </script>    
 </head>
 
-<body onload="onloadFunction(); test1($name)">
+<body onload="onloadFunction(); test1('$name');">
     <input type="hidden" name="afrom" id="afrom" value="$static">   <!-- value值為登入狀態，s為登入，f為未登入 -->
     <input type="hidden" name="aname" id="aname" value="$name">     <!-- 若登入，value為使用者名子，未登入則顯示none -->
     <section class="main-menu">
@@ -111,14 +173,14 @@ $def with (static, name)
 										</a>
                                         <ul class="dropdown-menu">
                                             <li><a href="/link/profile">設定</a></li>
-                                            <li><a href="#">VAULT</a></li>
+                                            <li><a href="/link/vault">VAULT</a></li>
                                             <li role="separator" class="divider"></li>
                                             <li><a href="/link/favorite">收藏</a></li>
                                             
                                         </ul>
                                     </li>
-                                    <li><span id="login_menu1"><a href="/command/signIn">Log In</a></span></li>
-                                    <li><span id="login_menu2"><a href="/command/signUp">註冊</a></span></li>
+                                    <li><a id="login_menu1" href="/command/signIn">Log In</a></li>
+                                    <li><a id="login_menu2" href="/command/signUp">註冊</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -133,29 +195,9 @@ $def with (static, name)
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<h3>My Favorite</h3><br>
 					<div class="list-group" align="left">
-
-                        <!-- 從這裡開始為動態新增參考程式 -->
-						<div class="list-group-item">
-							<div class="row">
-								<div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
-									<a href="/link/question?title=我從收藏來的&user=$name">             <!-- title的值要動態調整，這裡要放該問題的標題 -->
-										<h4 class="list-group-item-heading">墾丁到高雄班車發車時間?</h4> <!-- 內容的部分要動態調整，這裡要放該問題的標題 -->
-									</a>
-									<p class="list-group-item-text">想請問大大，我4/6日要去墾丁工作，上網查了時間末班車到高雄的時間是晚上7點，請問有人知道在墾丁哪裡搭有晚上7點後到高雄的車子嗎～謝謝</p>    <!-- 內容的部分要動態調整，這裡要放該問題的內容 -->
-									<div>
-										<a href="#">Travel</a>    <!-- 內容的部分要動態調整，這裡要放該問題的分類 -->
-										<span >-</span><span>2019-03-30</span>&nbsp;&nbsp;<span><img src="/static/images/mith.png" style="width:16px;height:16px;border:0;"> 23 MITH</span>   <!-- 依照該問題的ElapsedTime值計算多久前發布，形式自訂--> <!-- 內容的部分要動態調整，該問題提供的秘銀幣-->
-									</div>
-								</div>
-								<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-									<a href="/link/favorite/del?title=XXX&name=$name"> <!-- title的值要動態調整，這裡要放該問題的標題 -->
-										<img src="/static/images/trash.png" style="max-width:100%;"/>Remove
-									</a>
-								</div>
-							</div>
-						</div>
-                        <!-- 參考結束 -->
-
+                        <div id ="listf" lass="list-group-item">
+                                
+                        </div>
 					</div>
 				</div>
             </div>
@@ -175,8 +217,8 @@ $def with (static, name)
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <ul>
                             <li>商業合作</li>
-                            <li>關於我們</li>
-                            <li>聯絡我們</li>
+                            <li><a href="/about">關於我們</a></li>
+                            <li><a href="mailto:a57345734@yahoo.com.tw">聯絡我們</li>
                         </ul>
                     </div>
                     <img src="/static/images/facebook.png" /> <img src="/static/images/twitter.png" /> <img src="/static/images/youtube.png" /> </div>

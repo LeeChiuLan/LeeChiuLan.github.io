@@ -34,10 +34,27 @@ $def with (static, name)
 			if (afrom.value == "f" && username.value == "none"){
 				return;
 			}else{
-				logout_li="<a href=\""+"/command/signOut\""+">Log Out</a>";
-				logout_tag.innerHTML = logout_li;
+				logout_tag.innerHTML = "Log Out";
+				logout_tag.href = "/command/signOut"
 				usertag.innerHTML = username.value;
 			}
+		}
+		
+		function moneyCheck() {
+			var notOK=0;
+			var q_mithril=document.getElementById("q_mithril");
+			if(q_mithril.value < 20){
+				alert("at least 20 mith");
+				notOK=1;
+			}
+			
+			return notOK;
+		}
+		
+		function validate(){
+			var notOK=moneyCheck();
+			if(notOK()==1) return false;
+			else return true;
 		}
 	</script>
 </head>
@@ -77,14 +94,14 @@ $def with (static, name)
 										</a>
                                         <ul class="dropdown-menu">
                                             <li><a href="/link/profile">設定</a></li>
-                                            <li><a href="#">VAULT</a></li>
+                                            <li><a href="/link/vault">VAULT</a></li>
                                             <li role="separator" class="divider"></li>
                                             <li><a href="/link/favorite">收藏</a></li>
                                             
                                         </ul>
                                     </li>
-                                    <li><span id="login_menu1"><a href="/command/signIn">Log In</a></span></li>
-                                    <li><span id="login_menu2"><a href="/command/signUp">註冊</a></span></li>
+                                    <li><a id="login_menu1" href="/command/signIn">Log In</a></li>
+                                    <li><a id="login_menu2" href="/command/signUp">註冊</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -97,17 +114,19 @@ $def with (static, name)
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-					<form action="/command/postQuestion" method="post">
+					<form action="/command/postQuestion" method="post" onSubmit = "return validate();">
 						<h1>Post Question</h1>
 						<br>
 						<div class="form-group">
 							<label for="inputSubject">Subject</label>
-							<textarea class="form-control" id="inputSubject" name="subject" maxlength="500" rows="3" style="width:100%;" required></textarea>
+							<textarea class="form-control" id="q_title" name="q_title" maxlength="500" rows="3" style="width:100%;" required></textarea>
 						</div>
 						<div class="form-group">
 							<label for="inputType">Type</label>
 							<div>
-							<select iclass="form-control" id="q_pro" name="q_pro" size="4" multiple required>
+							<select class="form-control" id="q_pro" name="q_pro">
+							<!-- <select class="form-control" id="q_pro" name="q_pro" size="4" multiple required> -->
+								<option value="Blockchain">Blockchain</option>
 								<option value="Education">Education</option>
 								<option value="Computer">Computer</option>
 								<option value="Healthy">Healthy</option>
@@ -125,13 +144,13 @@ $def with (static, name)
 							</select>
 							</div>
 						</div>
-						<div class="form-group">
+<!-- 						<div class="form-group">
 							<label for="inputPeriod"> Validity Period</label>
-							<input type="text" class="form-control" id="q_title" name="q_title" placeholder="less than 5 (Unit: Day)" required>
-						</div>
-						<div class="form-group">
+							<input type="text" class="form-control" placeholder="less than 5 (Unit: Day)" required>
+						</div> -->
+<!-- 						<div class="form-group">
 							
-							<input type="checkbox" name="fancy-checkbox-primary" id="fancy-checkbox-primary" autocomplete="off" onclick="on_off_VAULT('fancy-checkbox-primary','id-vault-box');"/>
+							<input type="checkbox" name="fancy-checkbox-primary" id="fancy-checkbox-primary" value="1" autocomplete="off" onclick="on_off_VAULT('fancy-checkbox-primary','id-vault-box');"/>
 							<div class="[ btn-group ]">
 								<label for="fancy-checkbox-primary" class="[ btn btn-primary ]">
 									<span class="[ glyphicon glyphicon-ok ]"></span>
@@ -141,10 +160,18 @@ $def with (static, name)
 									VAULT
 								</label>
 							</div>
+							<div id="id-vault-box" style="display: none" class="form-group">
+								<label for="inputPeriod">Contribute to MITH (Mithril)</label>
+								<input type="text" class="form-control" id="q_mithril" name="q_mithril" placeholder="Must contribute 20 MITH(Mithril)" value="20" required>
+							</div>
 							<div id="id-vault-box" style="display: none">
 								<input type="text" class="form-control" id="q_mithril" name="q_mithril" placeholder="MITH(Mithril)" maxlength="50">
 							</div>
-						</div>
+						</div> -->
+						<div class="form-group">
+							<label for="inputPeriod">Contribute to MITH (Mithril)</label>
+							<input type="number" class="form-control" id="q_mithril" name="q_mithril" onfocusout="moneyCheck()" min="20" placeholder="Need at least 20 mith" required>
+						</div>						
 						<div class="form-group">
 							<label for="inputContent">Content</label>
 							<textarea class="form-control" id="q_content" name="q_content" maxlength="500" rows="7" style="width:100%;"></textarea>
@@ -152,7 +179,7 @@ $def with (static, name)
 						<div>
 							<br>
 							<button type="submit" class="btn btn-primary">Submit</button>
-							<button type="reset" class="btn btn-outline-secondary">Cancel</button>
+							<!-- <button type="reset" class="btn btn-outline-secondary">Cancel</button> -->
 						</div>
 						<input type="hidden" name="name" id="name" value="$name">
 					</form>
@@ -175,8 +202,8 @@ $def with (static, name)
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <ul>
                             <li>商業合作</li>
-                            <li>關於我們</li>
-                            <li>聯絡我們</li>
+                            <li><a href="/about">關於我們</a></li>
+                            <li><a href="mailto:a57345734@yahoo.com.tw">聯絡我們</li>
                         </ul>
                     </div>
                     <img src="/static/images/facebook.png" /> <img src="/static/images/twitter.png" /> <img src="/static/images/youtube.png" /> </div>
@@ -196,9 +223,6 @@ $def with (static, name)
 
 
  <div id="fixed-btn"><a href="#"><span class="glyphicon glyphicon-arrow-up"></span> to Top</a></div>
-
-
-
 
 </body>
 

@@ -1,4 +1,4 @@
-$def with (static, username, email, password, callphone, homephone)
+$def with (static, username, email, password, callphone, homephone, points)
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,12 +30,15 @@ $def with (static, username, email, password, callphone, homephone)
 			var username=document.getElementById("aname");
 			var usertag = document.getElementById("user_icon");
 			var logout_tag = document.getElementById("login_menu1");
+			var register_tag = document.getElementById("login_menu2");
 			
 			if (afrom.value == "f" && username.value == "none"){
 				return;
 			}else{
-				logout_li="<a href=\""+"/command/signOut\""+">Log Out</a>";
-				logout_tag.innerHTML = logout_li;
+				logout_tag.innerHTML = "Log Out";
+				logout_tag.href = "/command/signOut";
+				register_tag.innerHTML = "";
+				register_tag.href = "#";
 				usertag.innerHTML = username.value;
 			}
 		}
@@ -81,14 +84,14 @@ $def with (static, username, email, password, callphone, homephone)
 										</a>
                                         <ul class="dropdown-menu">
                                             <li><a href="/link/profile">設定</a></li>
-                                            <li><a href="#">VAULT</a></li>
+                                            <li><a href="/link/vault">VAULT</a></li>
                                             <li role="separator" class="divider"></li>
                                             <li><a href="/link/favorite">收藏</a></li>
                                             
                                         </ul>
                                     </li>
-                                    <li><span id="login_menu1"><a href="/command/signIn">Log In</a></span></li>
-                                    <li><span id="login_menu2"><a href="/command/signUp">註冊</a></span></li>
+                                    <li><a id="login_menu1" href="/command/signIn">Log In</a></li>
+                                    <li><a id="login_menu2" href="/command/signUp">註冊</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -110,11 +113,24 @@ $def with (static, username, email, password, callphone, homephone)
 							</div>
 							<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
 								<div class="gravatar">
-									<img data-id="4Q7LOM" class="pull-left photo" src="/static/images/person.jpg" alt="詩詩"/>
+									<img data-id="4Q7LOM" class="pull-left photo" src="/static/images/person.jpg" alt="$username"/>
 								</div>
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<span></span>&#62;
+								<span></span>
+							</div>
+						</div>	
+						</a>
+						<a href="/event/setting" class="list-group-item">
+						<div class="row">
+							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+								<span class="glyphicon glyphicon-flag"></span> Points
+							</div>
+							<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+								<span>$points</span>
+							</div>
+							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+								<span></span>
 							</div>
 						</div>	
 						</a>
@@ -127,7 +143,7 @@ $def with (static, username, email, password, callphone, homephone)
 								<span>$username</span>
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<span></span>&#62;
+								<span></span>
 							</div>
 						</div>	
 						</a>
@@ -140,7 +156,7 @@ $def with (static, username, email, password, callphone, homephone)
 								<span>$email</span>
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<span></span>&#62;
+								<span></span>
 							</div>
 						</div>	
 						</a>
@@ -153,7 +169,7 @@ $def with (static, username, email, password, callphone, homephone)
 								<span>••••••••</span>
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<span></span>&#62;
+								<span></span>
 							</div>
 						</div>	
 						</a>
@@ -169,7 +185,7 @@ $def with (static, username, email, password, callphone, homephone)
 								<span>$callphone</span>
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<span></span>&#62;
+								<span></span>
 							</div>
 						</div>	
 						</a>
@@ -182,7 +198,7 @@ $def with (static, username, email, password, callphone, homephone)
 								<span>$homephone</span>
 							</div>
 							<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-								<span></span>&#62;
+								<span></span>
 							</div>
 						</div>	
 						</a>
@@ -205,8 +221,8 @@ $def with (static, username, email, password, callphone, homephone)
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <ul>
                             <li>商業合作</li>
-                            <li>關於我們</li>
-                            <li>聯絡我們</li>
+                            <li><a href="/about">關於我們</a></li>
+                            <li><a href="mailto:a57345734@yahoo.com.tw">聯絡我們</li>
                         </ul>
                     </div>
                     <img src="/static/images/facebook.png" /> <img src="/static/images/twitter.png" /> <img src="/static/images/youtube.png" /> </div>
