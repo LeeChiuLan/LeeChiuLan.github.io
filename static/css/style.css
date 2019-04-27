@@ -422,7 +422,6 @@ footer {
     position: relative;
     top: -15px;
     left: 0px;
-    width: 20%;
-    height: 20%;
-    border: 1px solid pink;
+    width: 80px;
+    height: 40px;
 }
