@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+    <title>公佈欄</title>
+
+<style type="text/css">
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.clearfix:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+body {
+    line-height: 1.6;
+}
+
+.wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: 600;
+    padding-bottom: 1em;
+}
+
+.news li {
+    float: left;
+    width: 29.33333%;
+    margin: 2%;
+}
+
+@media(max-width:768px) {
+    .news li {
+        width: 46%;/*50%記得扣除768px以上的左右margin共4%*/
+    }
+}
+
+@media(max-width:569px) {
+    .news li {
+        width: 96%;/*100%記得扣除768px以上的左右margin共4%*/
+    }
+}
+
+.text-center{
+    text-align: center;
+    margin-top: 1.6rem;
+}
+.img-maxwidth{
+    display: block;
+    max-width: 100%;
+    margin: 10px auto;
+}
+.img-width{
+    display: block;
+    width: 100%;
+    margin: 10px auto;
+}
+</style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="content">
+            <ul class="news clearfix">
+                <li>
+                    <h2></h2>
+                    <img src="image/220507_pcr_dating_00.jpg" alt="">
+                    <p></p>
+                </li>
+                <li>
+                    <h2></h2>
+                    <img src="image/220507_pcr_dating_01.jpg" alt="">
+                    <p><a href="https://antiflu.cdc.gov.tw/ExaminationCounter">社區採檢院所地圖</a></p>
+                    <p><a href="https://www.cdc.gov.tw/">衛福部疾病管制署</a></p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</body>
